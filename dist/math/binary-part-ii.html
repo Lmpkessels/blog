@@ -208,15 +208,91 @@
                 </ul>
               </section>
               <section>
-                <h2 class="sub-post-heading"></h2>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
+                <h2 class="sub-post-heading">Difference explained</h2>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  Difference is used to return the output after applying a
+                  bit-by-bit operation.
+                </p>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  When the operation is done; difference is used to store the
+                  remaining byte and give it in return.
+                </p>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  ex. When you subtract 17 - 1 using the calculator on your
+                  phone, your CPU goes to work, starting at a transistor, each
+                  bit flows bit-by-bit through logic gates, each difference is
+                  stored and a byte is returned.
+                </p>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  Now that we’ve covered what ‘difference’ means, let’s break it
+                  down and see how CPUs handle subtraction at the logic gate
+                  level.
+                </p>
               </section>
               <section>
-                <h2 class="sub-post-heading"></h2>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
+                <h2 class="sub-post-heading">Difference under the hood</h2>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  <b>Figure 1.0</b> displays the difference in a diagram using
+                  2X logic gate XOR this is the exact route your CPU follows
+                  when transiting bits.
+                </p>
+                <img
+                  src="/dist/assets/"
+                  alt="Figure 1.2: Carry out simulation using logic gates"
+                  class="default-img-setting"
+                />
+                <figcaption
+                  class="fig-caption color-dg f-s-italic"
+                ></figcaption>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  Bit A and bit B flow through the logic gate XOR which then
+                  returns a bit, that bit then flows to the next gate, XOR logic
+                  is applied again with Borrow in, and the final output is
+                  returned.
+                </p>
+              </section>
+              <section>
+                <h2 class="sub-post-heading">Why XOR is used in Difference</h2>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  XOR is used to compare two bits, it returns 1 if the bits are
+                  different and 0 if they’re the same. That’s why it’s ideal for
+                  calculating the bitwise difference.
+                </p>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  If you’re not familiar with XOR check out
+                  <a href="https://www.lukefi.com/math/binary-part-i"
+                    >binary part-I</a
+                  >
+                  where you walk through a bit-by-bit XOR simulation using the
+                  basic gates, AND, NOT, and OR.
+                </p>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  Now let’s move to borrow out.
+                </p>
+              </section>
+              <section>
+                <h2 class="sub-post-heading">Why Borrow out is needed</h2>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  Because computers only store bits (0s and 1s) , going below 0
+                  will cause underflow, which will cause us to borrow out.
+                </p>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  Borrow-out checks whether subtraction at a bit column requires
+                  borrowing.
+                </p>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  We need to borrow when input A is less than input B at that
+                  bit column.
+                </p>
+              </section>
+              <section>
+                <h2 class="sub-post-heading">
+                  How borrow out flows through your CPU
+                </h2>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  <b>Figure 1.1</b> shows Borrow out in a circuit simulation,
+                  using for different gates NOT, AND, OR, and XOR.
+                </p>
                 <img
                   src="/assets/--snip--"
                   alt="Figure 1.2: Carry out simulation using logic gates"
@@ -225,38 +301,30 @@
                 <figcaption
                   class="fig-caption color-dg f-s-italic"
                 ></figcaption>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  Starting at the top A flows through the NOT gate to the
+                  transistor of the AND gate where B is waiting together they
+                  flow through AND and a final bit is returned. If a bit is
+                  stored we need to borrow else we follow the next logic.
+                </p>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  A and B flow through XOR a bit is returned which then flows
+                  through not borrow in is waiting at the transistor of the AND
+                  gate where both bits now flow through together, if the return
+                  value is 1 bit then we need to borrow if not we don’t.
+                </p>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  Now you know how both Difference and Borrow out flow through
+                  logic gates lets walk through a table.
+                </p>
               </section>
               <section>
-                <h2 class="sub-post-heading"></h2>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
-              </section>
-              <section>
-                <h2 class="sub-post-heading"></h2>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
-              </section>
-              <section>
-                <h2 class="sub-post-heading"></h2>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
-                <img
-                  src="/assets/--snip--"
-                  alt="Figure 1.2: Carry out simulation using logic gates"
-                  class="default-img-setting"
-                />
-                <figcaption
-                  class="fig-caption color-dg f-s-italic"
-                ></figcaption>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
-              </section>
-              <section>
-                <h2 class="sub-post-heading"></h2>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
+                <h2 class="sub-post-heading">Full table walkthrough</h2>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  <b>Figure 1.2</b> shows a subtraction full 8 bit adder with
+                  all five components. On the left hand side each bit’s index
+                  position is shown.
+                </p>
                 <div class="table-wrapper">
                   <div
                     class="horizontal-row horizontal-row-top flex-just-s-b .border-1px-top-bl border-1px-bott-bl border-1px-top-lg"
@@ -349,7 +417,9 @@
                     </div>
                   </div>
                 </div>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  For this example let’s take the row of bit_2.
+                </p>
                 <div class="max-750px-width flex-just-cntr">
                   <div
                     class="table-w flex-direction-row border-1px-lg border-radius-4px margin-12px-left"
@@ -372,25 +442,91 @@
                     </div>
                   </div>
                 </div>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
+                <p class="paragraph mrgn-t-b-1- 25r">
+                  We start at calculating the difference so we know what to
+                  write down at the Bit_2 column's position, so (0 XOR 1) = 1)
+                  XOR 0)) = 1), and we now know 1 needs to be written down in
+                  the column of Bit_2.
+                </p>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  Next, we check if a borrow is needed: (NOT 0 = 1) AND 1 = 1.
+                  This already signals a borrow, but let’s complete the logic.
+                  (0 AND (0 XOR 1)) = 0.
+                </p>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  So, 1 OR 0 = 1, this confirms that borrow-out is 1.
+                </p>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  Based on the math you’re using the CPU decides if it’s
+                  unassigned, if it’s unassigned mathematics then the CPU calls
+                  an error called underflow and a borrow out is needed.
+                </p>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  If you’re using assigned math you'll simply go below zero
+                  using 2's complement.
+                </p>
               </section>
               <section>
-                <h2 class="sub-post-heading"></h2>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
+                <h2 class="sub-post-heading">What is 1’s and 2’s complement</h2>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  Since memory only stores 0s and 1s, going below 0 directly
+                  isn’t possible without causing an error while compiling.
+                </p>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  So if we need to represent a negative number, we use 1s
+                  complement and 2s complement.
+                </p>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  1’s complement flips all bits, e.x. 10101 becomes → 01010,
+                  when you look at the pattern you simply see that all 1s have
+                  become 0s and all 0s have become 1s.
+                </p>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  2’s complement flips all bits + adds 1 bit, e.x. 00110 becomes
+                  11001 then one is added so it becomes 11010.
+                </p>
               </section>
               <section>
-                <h2 class="sub-post-heading"></h2>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
-                <p class="paragraph mrgn-t-b-1-25r"></p>
+                <h2 class="sub-post-heading">Closure</h2>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  In this blog we discussed binary subtraction and as of now you
+                  should be familiar with how it flows through logic gates in
+                  your CPU.
+                </p>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  If you’re interested in Systems, Rust, Comp-sci, Blockchain,
+                  and more follow along. To stay tuned in on the blog check out:
+                  class="paragraph mrgn-t-b-1-25r">
+                  <a
+                    href="https://www.linkedin.com/in/luuk-kessels"
+                    class="full-post-link"
+                    target="_blank"
+                    >LinkedIn</a
+                  >
+                  or,
+                  <a
+                    href="https://x.com/lukefi_"
+                    class="full-post-link"
+                    target="_blank"
+                    >X/Twitter</a
+                  >
+                  where I’ll be posting when a blog goes live.
+                </p>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  If you want programmed example where i simulate logic using
+                  functions check out:
+                  <a
+                    href="https://github.com/Lmpkessels/binarySeries"
+                    class="full-post-link"
+                    target="_blank"
+                    >binarySeries</a
+                  >
+                  where I have built an ALU from the gates up.
+                </p>
+                <p class="paragraph mrgn-t-b-1-25r">
+                  That’s it for now, keep in mind, “every program is an ALU at
+                  its lowest level” till the next one.
+                </p>
               </section>
             </article>
           </section>
