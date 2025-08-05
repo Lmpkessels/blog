@@ -520,12 +520,11 @@ html:not(.default-mode) .horizontal-row {
 
   h2 {
     font-size: 18px;
-    font-family: 400;
+    font-weight: 400;
   }
 
   p,
-  ul li,
-  .fig-caption {
+  ul li {
     font-size: 14px;
     font-weight: 400;
   }
@@ -533,6 +532,10 @@ html:not(.default-mode) .horizontal-row {
   .fig-caption {
     font-size: 12px;
     font-weight: 400;
+  }
+
+  .date {
+    font-size: 12px;
   }
 
   .title-scan-me,
