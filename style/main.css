@@ -513,6 +513,28 @@ html:not(.default-mode) .horizontal-row {
     text-decoration: none;
   }
 
+  h1 {
+    font-size: 22px;
+    font-weight: 800;
+  }
+
+  h2 {
+    font-size: 18px;
+    font-family: 400;
+  }
+
+  p,
+  ul li,
+  .fig-caption {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .fig-caption {
+    font-size: 12px;
+    font-weight: 400;
+  }
+
   .title-scan-me,
   .title-copy-me {
     font-size: 18px;
