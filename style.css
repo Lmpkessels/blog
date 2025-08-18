@@ -1,0 +1,201 @@
+/****** Default display settings *******/
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+h2 {
+  margin-top: 8px;
+}
+
+hr {
+  border: none;
+  height: 4px;
+  background-color: #dcdcdc;
+  margin: 24px 0px 24px 0px;
+}
+
+center {
+  margin: 34px 0px 34px 0px;
+}
+
+a {
+  color: #0a0f1c;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+a:hover {
+  color: #4f69c4;
+  text-decoration: underline;
+}
+
+li {
+  list-style: none;
+  margin-bottom: 44px;
+}
+
+.post-date {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #888888;
+  width: 100px;
+  margin-bottom: 100px;
+}
+
+.content-header {
+  color: #888888;
+  transition: 0.3s ease;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.content-header:hover {
+  color: #4f69c4;
+  text-decoration: underline;
+}
+
+.date-and-link {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.post-list {
+  margin: 44px 4px 44px 4px;
+}
+
+.page-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.content-wrapper {
+  width: 750px;
+  height: 100vh;
+  padding: 44px 16px 44px 16px;
+}
+
+.link-category {
+  display: inline-block;
+  padding: 8px 4px 8px 4px;
+  text-decoration: none;
+  width: 100px;
+}
+
+.link {
+  color: #888888;
+}
+
+.header-full-post {
+  border-bottom: 1px solid #dcdcdc;
+  padding-bottom: 12px;
+  margin-top: 44px;
+}
+
+/****** Light/Dark mode ******/
+
+html.default-mode body {
+  background-color: #ffffff;
+  color: #000;
+}
+
+html.default-mode .toggle-wrapper {
+  width: 44px;
+  height: 22px;
+  border-radius: 999px;
+  position: relative;
+  background-color: #f69c3d;
+  cursor: pointer;
+}
+
+html.default-mode .toggle-knob {
+  position: absolute;
+  top: 2px;
+  right: 24px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  transition: all 0.3s ease;
+}
+
+html.default-mode .header-link,
+html.default-mode .full-post-link,
+html.default-mode .border-1px-lg {
+  color: #000;
+  text-decoration: none;
+}
+
+html.default-mode .post-link {
+  color: #dcdcdc;
+  text-decoration: none;
+}
+
+html:not(.default-mode) body {
+  background-color: #0a0f1c;
+  color: #ffffff;
+}
+
+html:not(.default-mode) .toggle-wrapper {
+  width: 44px;
+  height: 22px;
+  border-radius: 999px;
+  position: relative;
+  background-color: #4f69c4;
+  cursor: pointer;
+}
+
+html:not(.default-mode) .toggle-knob {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  transition: all 0.3s ease;
+}
+
+html:not(.default-mode) a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+html:not(.default-mode) a:hover {
+  color: #4f69c4;
+  text-decoration: underline;
+}
+
+/***** TOGGLE ICONS *****/
+.toggle-sun,
+.toggle-moon {
+  width: 18px;
+}
+
+.toggle-wrapper:active .toggle-knob {
+  width: 36px;
+  right: 4px;
+  border-radius: 99px;
+}
+
+.whole-toggle {
+  height: 22px;
+}
+
+.light-dark-toggle {
+  display: flex;
+  justify-content: flex-end;
+}
