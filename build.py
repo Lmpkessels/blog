@@ -153,7 +153,7 @@ def build():
         for d, t, url in all_posts
     ]
     root_home = (HOME_TPL
-        .replace("$html_title$", "lkessels blog")   # <title> in <head>
+        .replace("$html_title$", "lkessels | blog")   # <title> in <head>
         .replace("$section$", "lkessels blog")
         .replace("$posts$", "\n".join(all_items))
     )
