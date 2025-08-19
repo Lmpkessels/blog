@@ -106,12 +106,14 @@
 <p>One takes 120 minutes, the other 75. You want to know exactly how much time it takes, you take your phone, use the calculator app, and add up 120 + 75.</p>
 <p>In binary that’s 01111000 + 01001011.</p>
 <p>At the end of this blog you’ll have a deeper understanding of how computers, and even your phone think, to make bit-by-bit calculations in addition.</p>
-<p>If you’re not familiar with binary check out <binary-part-0> where we dive into the basics of binary.</p>
+<p>If you’re not familiar with binary check out <a href="https://www.lukefi.com/content/2025/2025-06/binary-part-0">binary-part-0</a> where we dive into the basics of binary.
+<br /></p>
 <h2>The 5 Parts Used in Binary Addition</h2>
 <p>You have <strong>input A, input B</strong>, and <strong>Carry In</strong> to calculate the total result. Carry In is the overflow from the previous bit-by-bit calculation.</p>
 <p>Then you have sum and carry out both using logic gates. Sum represents the result bit, and Carry out communicates if there’s overflow.</p>
 <p>Sum uses the XOR gate twice.</p>
-<p>Carry Out uses AND, OR, and XOR.</p>
+<p>Carry Out uses AND, OR, and XOR.
+<br /></p>
 <h2>How XOR is created</h2>
 <p><strong>XOR</strong> is created by making use of all three basic gates; <strong>AND, NOT,</strong> and <strong>OR.</strong> In figure 1.0 below I show you an example of the <strong>XOR</strong> logic gate using a diagram:</p>
 <figure>
@@ -128,7 +130,8 @@
 
 <p>This XOR circuit follows the logical expression: ((a AND NOT b) OR (b AND NOT a)).</p>
 <p>Which is the definition of XOR: a is true if b is false, and b is true if a is false, if a is true and b is true then the output is false. Same in, if a is false and b is false then the output is false.</p>
-<p>Next, let’s explore how the Sum logic works.</p>
+<p>Next, let’s explore how the Sum logic works.
+<br /></p>
 <h2>How Sum works under the hood</h2>
 <p>Sum looks a bit more complex under the hood, but its only difference is that it uses the XOR gate twice, as shown in figure 1.1.</p>
 <figure>
@@ -146,7 +149,8 @@
 <p>This Sum circuit follows the logical expression: (a AND NOT b) OR (b AND NOT a) = Output, then (CarryIn AND NOT output) OR (NOT output AND CarryIn).</p>
 <p>So simply put, the Sum circuit follows 2X the logical expression: ((a XOR b) XOR carry in).</p>
 <p>When the output of Sum is received it’s stored in memory.</p>
-<p>Now, let’s move to the last layer of the full adder.</p>
+<p>Now, let’s move to the last layer of the full adder.
+<br /></p>
 <h2>Carry out the last layer</h2>
 <p>Carry out is used to detect overflow, if there’s overflow then there’s no storage left in memory to point to.</p>
 <p>Carry out uses 3 gates: AND, OR, and XOR, in figure 1.2 below, I illustrate carry out using all three gates:</p>
@@ -166,7 +170,8 @@
 <p>This Carry Out circuit follows the logical expressions: ((a AND b) OR (CarryIn AND (a AND NOT b) OR (b AND NOT a)).</p>
 <p>Simply put Carry out in logical expressions: ((a AND b) OR (CarryIn AND (a XOR b)).</p>
 <p>As you’ve seen in the three diagrams above, everything can be built using just three basic gates: AND, NOT and OR.</p>
-<p>But, why are logic gates used?</p>
+<p>But, why are logic gates used?
+<br /></p>
 <h2>Why logic gates are used</h2>
 <p>In addition the CPU in your PC communicates through logic gates. A CPU contains transistors which are the starting point before each logic gate, when enough voltage is received at the transistor it communicates ON, if no voltage is received, OFF. Then it goes through the logic gate, depending on each gate logic is applied.</p>
 <p>Let’s look at an 8-bit full adder below using; Input_a, Input_b, Carry_in, Sum and Carry_out.</p>
@@ -215,14 +220,16 @@ Because computers start counting at Index 0 we will do the same, Bit_0 represent
 </figure>
 
 <p>Carry_in is the Carry_out from the previous bit-by-bit calculation. So each Carry_in is carried from the previous row, and received from Carry_out.</p>
-<p>You can read the remaining byte in the Sum column; a return value is given by repeating a bit-by-bit addition process 8 times.</p>
+<p>You can read the remaining byte in the Sum column; a return value is given by repeating a bit-by-bit addition process 8 times.
+<br /></p>
 <h2>Why This Matters for CPUs</h2>
 <p><strong>Carry_in</strong> is the overflow of the previous bit-by-bit calculation. Once we Carry_in we know that the previous <strong>Carry_out</strong> had 1 bit that it couldn’t store, called overflow.</p>
 <p>If at the end of the 8-Bit Full Adder, we end up with one bit overflow, then, the result may not fit in 8 bits, requiring more memory.</p>
 <p>This means that the program may not compile for the user if memory doesn’t allow, else the CPU adds another byte if memory allows.</p>
 <p>The Sum tells the CPU which value to store in memory, after the 8-bit full adder completes.</p>
 <p>After pressing (=) on your calculation app the CPU follows this 8-Bit full adder and decimal number 195 is shown.</p>
-<p>And just like that, you’ve seen how your phone adds 120 + 75, one bit at a time.</p>
+<p>And just like that, you’ve seen how your phone adds 120 + 75, one bit at a time.
+<br /></p>
 <h2>Closure</h2>
 <p>This is part I of a multi-part series exploring how binary logic powers real computing. I’m sharing what I learn as I go, from carrying logic to CPUs and memory.</p>
 <p>Part II, covers subtraction and borrow logic.</p>

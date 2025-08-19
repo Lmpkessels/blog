@@ -109,7 +109,7 @@ def build():
         if "html_title" in fm:
             post_html_title = fm["html_title"]
         else:
-            post_html_title = f"{title} | LukeFi"
+            post_html_title = f"{title} | Lukefi"
 
         # convert Markdown
         md = markdown.Markdown(extensions=["tables", "fenced_code"])
