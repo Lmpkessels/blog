@@ -23,9 +23,9 @@ FNAME_RE = re.compile(r"^(?P<y>\d{4})-(?P<m>\d{2})-(?P<d>\d{2})-(?P<slug>.+)\.md
 
 SECTION_LABELS = {
     "math": "Mathematics",
-    "hq": "Lukefi Headquarters",
+    "hq": "Lukefi blog",
     "thinking": "Thinking Vault",
-    "misc": "Lukefi Headquarters",  # fallback
+    "misc": "Lukefi blog",  # fallback
 }
 def label_for(sec: str) -> str:
     return SECTION_LABELS.get(sec.lower(), sec.title())
@@ -153,8 +153,8 @@ def build():
         for d, t, url in all_posts
     ]
     root_home = (HOME_TPL
-        .replace("$html_title$", "Lukefi | Headquarters")   # <title> in <head>
-        .replace("$section$", "Lukefi Headquarters")
+        .replace("$html_title$", "Lukefi | blog")   # <title> in <head>
+        .replace("$section$", "Lukefi blog")
         .replace("$posts$", "\n".join(all_items))
     )
     (ROOT / "index.html").write_text(root_home, encoding="utf-8")
