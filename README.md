@@ -1,6 +1,6 @@
 # Lukefi Blog
 
-Welcome to my personal blog, build with HTML, CSS, and JS. I use this blog to deepen my understanding in software, crypto, and self-mastery.
+Welcome to my personal blog, build with HTML, CSS, JS, and Python. This blog is used to deepen my understanding through writing.
 
 ## Live Site
 

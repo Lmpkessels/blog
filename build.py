@@ -8,7 +8,7 @@ TPL_DIR    = ROOT / "templates"
 OUT_DIR    = ROOT / "content"
 HOME_DIR   = OUT_DIR / "0000"   # section homepages live here
 
-SITE_URL   = "https://lukefi.com"
+SITE_URL   = "https://lmpkessels.com"
 
 # ---------- Templates ----------
 POST_TPL   = (TPL_DIR / "post.html").read_text(encoding="utf-8")
@@ -23,19 +23,19 @@ FNAME_RE = re.compile(r"^(?P<y>\d{4})-(?P<m>\d{2})-(?P<d>\d{2})-(?P<slug>.+)\.md
 
 SECTION_LABELS = {
     "math": "Mathematics",
-    "hq": "Lkessels blog",
+    "hq": "lkessels blog",
     "thinking": "Thinking Vault",
-    "misc": "Lkessels blog",  # fallback
+    "misc": "lkessels blog",  # fallback
 }
 def label_for(sec: str) -> str:
     return SECTION_LABELS.get(sec.lower(), sec.title())
 
 # ---------- Section Titles (for <title> in <head>) ----------
 SECTION_TITLES = {
-    "math": "Mathematics | Lkessels blog",
-    "thinking": "Thinking Vault | Lkessels blog",
-    "hq": "Lukefi Headquarters | Lkessels blog",
-    "misc": "Lukefi Misc | Lkessels blog",
+    "math": "Mathematics | lkessels blog",
+    "thinking": "Thinking Vault | lkessels blog",
+    "hq": "lkessels Headquarters | lkessels blog",
+    "misc": "lkessels Misc | lkessels blog",
 }
 
 # ---------- Helpers ----------
@@ -109,7 +109,7 @@ def build():
         if "html_title" in fm:
             post_html_title = fm["html_title"]
         else:
-            post_html_title = f"{title} | Lkessels blog"
+            post_html_title = f"{title} | lkessels blog"
 
         # convert Markdown
         md = markdown.Markdown(extensions=["tables", "fenced_code"])
@@ -153,8 +153,8 @@ def build():
         for d, t, url in all_posts
     ]
     root_home = (HOME_TPL
-        .replace("$html_title$", "Lkessels | blog")   # <title> in <head>
-        .replace("$section$", "Lkessels blog")
+        .replace("$html_title$", "lkessels | blog")   # <title> in <head>
+        .replace("$section$", "lkessels | blog")
         .replace("$posts$", "\n".join(all_items))
     )
     (ROOT / "index.html").write_text(root_home, encoding="utf-8")
@@ -170,7 +170,7 @@ def build():
         ]
         label = label_for(sec)
         html = (HOME_TPL
-            .replace("$html_title$", SECTION_TITLES.get(sec, f"{label} | Lkessels"))  # <title>
+            .replace("$html_title$", SECTION_TITLES.get(sec, f"{label} | lkessels"))  # <title>
             .replace("$section$", label)
             .replace("$posts$", "\n".join(items))
         )
