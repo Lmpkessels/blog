@@ -190,4 +190,4 @@ If you want to stay updated follow me on [X/Twitter](https://x.com/lukefi_) here
 
 If you want to see programmed examples where I simulate logic gates using Rust, then check out: [binarySeries](https://github.com/Lmpkessels/binarySeries).
 
-P.S. I used ChatGPT to fact-check, but ChatGPT and I can both make mistakes. If you spot a mistake, or see an opportunity to improve, feel free to reach out: [email](luuk@lukefi.com)
+P.S. I used ChatGPT to fact-check, but ChatGPT and I can both make mistakes. If you spot a mistake, or see an opportunity to improve, feel free to reach out: [email](l@lmpkessels.com)
