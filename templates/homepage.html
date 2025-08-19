@@ -2,17 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000"
       rel="stylesheet"
     />
+    <link rel="icon" href="/assets/white-logo-k3-4.ico" type="image/x-icon" />
+    <title>$html_title$</title>
+    <meta name="description" content="$desc$" />
+
     <link rel="icon" href="" />
-    <link rel="stylesheet" href="style.css" />
-    <title>--snip--</title>
+    <link rel="stylesheet" href="/style.css" />
+    <meta name="description" content="$desc$" />
     <!-- Toggle script for light/dark mode -->
     <script>
       const savedTheme = localStorage.getItem("theme");
@@ -33,10 +36,7 @@
       <div class="content-wrapper">
         <header>
           <!-- Light - dark, mode toggle -->
-          <div
-            class="light-dark-toggle flex-align-cntr flex-just-fl-end"
-            id="theme-toggle"
-          >
+          <div class="light-dark-toggle" id="theme-toggle">
             <noscript>
               Toggle light-dark-mode not shown, your browsers doesn't supper
               JavaScript.
@@ -59,7 +59,7 @@
 
             <!-- Toggle wrapper + toggle knob -->
             <div class="toggle-wrapper">
-              <div class="toggle-knob flex-align-cntr flex-direction-row"></div>
+              <div class="toggle-knob"></div>
             </div>
 
             <!-- Moon icon -->
@@ -78,25 +78,30 @@
               />
             </svg>
           </div>
-          <center>
-            <h1>Lukes headquarters</h1>
-          </center>
+          <center><h1>$section$</h1></center>
           <center>
             <hr />
             <span class="link-category">
-              <a href="content/0000/math.html">Math</a>
+              <a href="content/0000/math.html" class="nav-anchor">Math</a>
             </span>
             <span class="link-category">
-              <a href="content/about/index.html">About me</a>
+              <a href="content/about/index.html" class="nav-anchor">About me</a>
             </span>
             <span class="link-category">
-              <a href="https://github.com/Lmpkessels" target="_blank">GitHub</a>
+              <a
+                href="https://github.com/Lmpkessels"
+                class="nav-anchor"
+                target="_blank"
+                >GitHub</a
+              >
             </span>
             <span class="link-category">
-              <a href="https://x.com/lukefi_" target="_blank">X/Twitter</a>
+              <a href="https://x.com/lukefi_" class="nav-anchor" target="_blank"
+                >X/Twitter</a
+              >
             </span>
             <span class="link-category">
-              <a href="/index.html">HQ</a>
+              <a href="/index.html" class="nav-anchor">HQ</a>
             </span>
             <hr />
           </center>

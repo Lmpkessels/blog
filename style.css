@@ -1,5 +1,4 @@
-/****** Default display settings *******/
-
+/****** RESET & DEFAULT DISPLAY SETTINGS *******/
 *,
 *::before,
 *::after {
@@ -13,19 +12,20 @@ body {
   font-family: "Nunito Sans", sans-serif;
 }
 
+/****** TYPOGRAPHY & CONTENT *******/
 h2 {
-  margin-top: 8px;
+  margin-top: 24px;
+}
+
+p {
+  margin-top: 12px;
 }
 
 hr {
   border: none;
   height: 4px;
   background-color: #dcdcdc;
-  margin: 24px 0px 24px 0px;
-}
-
-center {
-  margin: 34px 0px 34px 0px;
+  margin: 24px 0;
 }
 
 a {
@@ -39,21 +39,59 @@ a:hover {
   text-decoration: underline;
 }
 
+.nav-anchor {
+  color: #888;
+}
+
 li {
   list-style: none;
   margin-bottom: 44px;
 }
 
+/****** LAYOUT *******/
+.page-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.content-wrapper {
+  max-width: 750px;
+  width: 100%;
+  min-height: 100vh;
+  padding: 44px 8px;
+}
+
+.post-list {
+  margin: 44px 4px;
+}
+
+.date-and-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+/****** POST STYLES *******/
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 4px;
+}
+
 .post-date {
-  margin-top: 0.5rem;
+  margin-top: 0;
   font-size: 0.875rem;
-  color: #888888;
+  color: #888;
   width: 100px;
-  margin-bottom: 100px;
 }
 
 .content-header {
-  color: #888888;
+  color: #888;
   transition: 0.3s ease;
   text-decoration: none;
   font-weight: 400;
@@ -64,38 +102,15 @@ li {
   text-decoration: underline;
 }
 
-.date-and-link {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 8px;
-}
-
-.post-list {
-  margin: 44px 4px 44px 4px;
-}
-
-.page-container {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 100vh;
-}
-
-.content-wrapper {
-  width: 750px;
-  height: 100vh;
-  padding: 44px 16px 44px 16px;
-}
-
 .link-category {
   display: inline-block;
-  padding: 8px 4px 8px 4px;
+  padding: 8px 4px;
   text-decoration: none;
   width: 100px;
 }
 
 .link {
-  color: #888888;
+  color: #888;
 }
 
 .header-full-post {
@@ -104,8 +119,7 @@ li {
   margin-top: 44px;
 }
 
-/****** Light/Dark mode ******/
-
+/****** LIGHT / DARK MODE *******/
 html.default-mode body {
   background-color: #ffffff;
   color: #000;
@@ -179,7 +193,7 @@ html:not(.default-mode) a:hover {
   text-decoration: underline;
 }
 
-/***** TOGGLE ICONS *****/
+/****** TOGGLE ICONS *******/
 .toggle-sun,
 .toggle-moon {
   width: 18px;
@@ -198,4 +212,89 @@ html:not(.default-mode) a:hover {
 .light-dark-toggle {
   display: flex;
   justify-content: flex-end;
+}
+
+/****** TABLE STYLES *******/
+/* keep your centering fix (Option B) */
+figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3.5em auto;
+  overflow-x: auto;
+}
+
+figure table {
+  width: 98%;
+  max-width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+figure th,
+figure td {
+  padding: 0.5em 1em;
+  text-align: center;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+figure tr:last-child td {
+  border-bottom: 0;
+}
+figure th:last-child,
+figure td:last-child {
+  border-right: 0;
+}
+
+figcaption {
+  text-align: center;
+  font-size: 0.9em;
+  color: #555;
+  margin-top: 0.5em;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+  font-style: italic;
+}
+
+.table-350px {
+  max-width: 350px;
+  width: 100%;
+  align-self: center;
+}
+
+/****** RESPONSIVE *******/
+@media (max-width: 768px) {
+  .content-wrapper {
+    width: 98%;
+    max-width: 100%;
+  }
+  h1 {
+    font-size: 22px;
+    font-weight: 700;
+  }
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  p {
+    font-size: 16px;
+  }
+}
+
+/******* Scrollbar Fix (keep viewport width stable) *******/
+:root {
+  scrollbar-gutter: stable;
+}
+
+@supports not (scrollbar-gutter: stable) {
+  html {
+    overflow-y: scroll;
+  }
 }

@@ -1,7 +1,6 @@
 import re, pathlib, datetime, markdown
 import xml.etree.ElementTree as ET
 
-
 # ---------- Paths ----------
 ROOT       = pathlib.Path(__file__).parent
 POSTS_DIR  = ROOT / "posts"
@@ -21,6 +20,23 @@ DEFAULT_IMAGE = "/assets/default.png"
 # ---------- Regex ----------
 FM_RE    = re.compile(r"^---\s*\n(.*?)\n---\s*\n(.*)$", re.S)
 FNAME_RE = re.compile(r"^(?P<y>\d{4})-(?P<m>\d{2})-(?P<d>\d{2})-(?P<slug>.+)\.md$", re.I)
+
+SECTION_LABELS = {
+    "math": "Mathematics",
+    "hq": "Lukefi Headquarters",
+    "thinking": "Thinking Vault",
+    "misc": "Lukefi Headquarters",  # fallback
+}
+def label_for(sec: str) -> str:
+    return SECTION_LABELS.get(sec.lower(), sec.title())
+
+# ---------- Section Titles (for <title> in <head>) ----------
+SECTION_TITLES = {
+    "math": "Mathematics | Lukefi blog",
+    "thinking": "Thinking Vault | Lukefi blog",
+    "hq": "Lukefi Headquarters — Lukefi blog",
+    "misc": "Lukefi Misc | Lukefi blog",
+}
 
 # ---------- Helpers ----------
 def slugify(s: str) -> str:
@@ -77,8 +93,10 @@ def build():
 
         # --- front matter overrides ---
         if "date" in fm:
-            try: date = datetime.date.fromisoformat(fm["date"])
-            except ValueError: pass
+            try: 
+                date = datetime.date.fromisoformat(fm["date"])
+            except ValueError: 
+                pass
         if "slug" in fm:
             slug = slugify(fm["slug"])
 
@@ -102,12 +120,13 @@ def build():
 
         html_out = (POST_TPL
             .replace("$title$", title)
-            .replace("$date$", fmt_date_h(date))   # ✅ Human-readable date
+            .replace("$date$", fmt_date_h(date))
             .replace("$body$", body_html)
             .replace("$desc$", desc)
             .replace("$canonical$", canonical)
             .replace("$image$", image)
         )
+
         post_file.write_text(html_out, encoding="utf-8")
         print("Built post:", post_file)
 
@@ -118,7 +137,7 @@ def build():
         by_section.setdefault(section, []).append(item)
         by_month.setdefault((date.year, date.month), []).append(item)
 
-    # ----- Headquarters homepage -----
+    # ----- Root homepage -----
     all_posts.sort(key=lambda x: x[0], reverse=True)
     all_posts = dedupe(all_posts)
     all_items = [
@@ -126,7 +145,11 @@ def build():
         f'<h2><a href="{url}" class="content-header">{t}</a></h2></li>'
         for d, t, url in all_posts
     ]
-    root_home = HOME_TPL.replace("$posts$", "\n".join(all_items))
+    root_home = (HOME_TPL
+        .replace("$html_title$", "Lukefi | Headquarters")   # <title> in <head>
+        .replace("$section$", "Lukefi Headquarters")
+        .replace("$posts$", "\n".join(all_items))
+    )
     (ROOT / "index.html").write_text(root_home, encoding="utf-8")
 
     # ----- Section pages (Math, etc) -----
@@ -135,24 +158,30 @@ def build():
         posts = dedupe(posts)
         items = [
             f'<li><span class="post-date">{fmt_date_h(d)}</span> '
-            f'<h2><a href="{url} class="content-header">{t}</a></h2></li>'
+            f'<h2><a href="{url}" class="content-header">{t}</a></h2></li>'
             for d, t, url in posts
         ]
-        html = HOME_TPL.replace("$posts$", "\n".join(items))
+        label = label_for(sec)
+        html = (HOME_TPL
+            .replace("$html_title$", SECTION_TITLES.get(sec, f"{label} | Lukefi"))  # <title>
+            .replace("$section$", label)
+            .replace("$posts$", "\n".join(items))
+        )
         (HOME_DIR / f"{sec}.html").write_text(html, encoding="utf-8")
 
     # ----- Sitemap ----- #
+    nsmap = {"custom": "https://lukefi.com/ns"}
     urlset = ET.Element("urlset", {
         "xmlns": "http://www.sitemaps.org/schemas/sitemap/0.9",
-        "xmlns:custom": "https://lukefi.com/ns"  # for non-standard fields
+        **{f"xmlns:{k}": v for k, v in nsmap.items()}
     })
 
     for d, t, url in all_posts:
         url_el = ET.SubElement(urlset, "url")
         ET.SubElement(url_el, "loc").text = f"{SITE_URL}{url}"
         ET.SubElement(url_el, "lastmod").text = d.isoformat()
-        ET.SubElement(url_el, "custom:title").text = t
-        ET.SubElement(url_el, "custom:date").text = d.isoformat()
+        ET.SubElement(url_el, "{https://lukefi.com/ns}title").text = t
+        ET.SubElement(url_el, "{https://lukefi.com/ns}date").text = d.isoformat()
 
     sitemap_xml = ET.tostring(urlset, encoding="utf-8", xml_declaration=True)
     (ROOT / "sitemap.xml").write_bytes(sitemap_xml)
