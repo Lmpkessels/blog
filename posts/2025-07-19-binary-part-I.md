@@ -16,7 +16,8 @@ In binary that’s 01111000 + 01001011.
 
 At the end of this blog you’ll have a deeper understanding of how computers, and even your phone think, to make bit-by-bit calculations in addition.
 
-If you’re not familiar with binary check out <binary-part-0> where we dive into the basics of binary.
+If you’re not familiar with binary check out [binary-part-0](https://www.lukefi.com/content/2025/2025-06/binary-part-0) where we dive into the basics of binary.
+<br />
 
 ## The 5 Parts Used in Binary Addition
 
@@ -27,6 +28,7 @@ Then you have sum and carry out both using logic gates. Sum represents the resul
 Sum uses the XOR gate twice.
 
 Carry Out uses AND, OR, and XOR.
+<br />
 
 ## How XOR is created
 
@@ -49,6 +51,7 @@ This XOR circuit follows the logical expression: ((a AND NOT b) OR (b AND NOT a)
 Which is the definition of XOR: a is true if b is false, and b is true if a is false, if a is true and b is true then the output is false. Same in, if a is false and b is false then the output is false.
 
 Next, let’s explore how the Sum logic works.
+<br />
 
 ## How Sum works under the hood
 
@@ -73,6 +76,7 @@ So simply put, the Sum circuit follows 2X the logical expression: ((a XOR b) XOR
 When the output of Sum is received it’s stored in memory.
 
 Now, let’s move to the last layer of the full adder.
+<br />
 
 ## Carry out the last layer
 
@@ -100,6 +104,7 @@ Simply put Carry out in logical expressions: ((a AND b) OR (CarryIn AND (a XOR b
 As you’ve seen in the three diagrams above, everything can be built using just three basic gates: AND, NOT and OR.
 
 But, why are logic gates used?
+<br />
 
 ## Why logic gates are used
 
@@ -158,6 +163,7 @@ In decimal, the total range would be eight bits.
 Carry_in is the Carry_out from the previous bit-by-bit calculation. So each Carry_in is carried from the previous row, and received from Carry_out.
 
 You can read the remaining byte in the Sum column; a return value is given by repeating a bit-by-bit addition process 8 times.
+<br />
 
 ## Why This Matters for CPUs
 
@@ -172,6 +178,7 @@ The Sum tells the CPU which value to store in memory, after the 8-bit full adder
 After pressing (=) on your calculation app the CPU follows this 8-Bit full adder and decimal number 195 is shown.
 
 And just like that, you’ve seen how your phone adds 120 + 75, one bit at a time.
+<br />
 
 ## Closure
 

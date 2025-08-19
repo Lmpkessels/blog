@@ -148,7 +148,7 @@ def build():
     all_posts.sort(key=lambda x: x[0], reverse=True)
     all_posts = dedupe(all_posts)
     all_items = [
-        f'<li><span class="post-date">{fmt_date_h(d)}</span> '  
+        f'<li class="post-li"><span class="post-date">{fmt_date_h(d)}</span> '  
         f'<h2><a href="{url}" class="content-header">{t}</a></h2></li>'
         for d, t, url in all_posts
     ]
@@ -164,7 +164,7 @@ def build():
         posts.sort(key=lambda x: x[0], reverse=True)
         posts = dedupe(posts)
         items = [
-            f'<li><span class="post-date">{fmt_date_h(d)}</span> '
+            f'<li class="post-li"><span class="post-date">{fmt_date_h(d)}</span> '
             f'<h2><a href="{url}" class="content-header">{t}</a></h2></li>'
             for d, t, url in posts
         ]

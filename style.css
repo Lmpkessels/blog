@@ -43,9 +43,13 @@ a:hover {
   color: #888;
 }
 
-li {
+.post-li {
   list-style: none;
   margin-bottom: 44px;
+}
+
+.post-ul {
+  margin: 24px 44px;
 }
 
 /****** LAYOUT *******/

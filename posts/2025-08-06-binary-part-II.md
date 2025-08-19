@@ -10,7 +10,7 @@ slug: binary-part-ii
 
 Today you’ll learn how binary subtraction works at the lowest level in your machine.
 
-If you’re not familiar with binary check out binary part-0 here you’ll find out why binary is used and how it flows through components of your PC.
+If you’re not familiar with binary check out [binary part-0](https://www.lukefi.com/content/2025/2025-06/binary-part-0) here you’ll find out why binary is used and how it flows through components of your PC.
 
 ## The 5 components in binary subtraction
 
@@ -66,7 +66,7 @@ Bit A and bit B flow through the logic gate XOR which then returns a bit, that b
 
 XOR is used to compare two bits, it returns 1 if the bits are different and 0 if they’re the same. That’s why it’s ideal for calculating the bitwise difference.
 
-If you’re not familiar with XOR check out binary-part-I where you walk through a bit-by-bit XOR simulation using the basic gates, AND, NOT, and OR.
+If you’re not familiar with XOR check out [binary-part-I](https://www.lukefi.com/content/2025/2025-07/binary-part-i) where you walk through a bit-by-bit XOR simulation using the basic gates, AND, NOT, and OR.
 
 Now let’s move to borrow out.
 <br />

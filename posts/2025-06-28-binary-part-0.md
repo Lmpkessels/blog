@@ -24,8 +24,10 @@ CPUs use binary in logic gates; you can see each logic gate as a mathematical fu
 
 A transistor acts like a digital switch:
 
-- 1 = Electricity flows (ON)
-- 0 = No flow (OFF)
+<ul class="post-ul">
+  <li>1 = Electricity flows (ON)</li>
+  <li>0 = No flow (OFF)</li>
+</ul>
 
 If you’re reading this blog from your macbook with a K2 chip then your chip contains “~20 Billion transistors, each acting as an on/off switch letting your computer process data lightning-fast.” so you can read the right message from your screen.
 
