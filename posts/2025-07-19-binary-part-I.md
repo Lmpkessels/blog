@@ -179,7 +179,7 @@ This is part I of a multi-part series exploring how binary logic powers real com
 
 Part II, covers subtraction and borrow logic.
 
-If you want to stay updated follow me on [X/Twitter] or [LinkedIn] here I’ll post when part II goes live.
+If you want to stay updated follow me on [X/Twitter](https://x.com/lukefi_) here I’ll post when part II goes live.
 
 If you want to see programmed examples where I simulate logic gates using Rust, then check out: [binarySeries](https://github.com/Lmpkessels/binarySeries).
 
