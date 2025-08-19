@@ -1,6 +1,6 @@
 ---
 title: Binary addition explained
-html_title: Binary part-I | LukeFi blog
+html_title: Binary part-I
 description: A clear visual intro to how your phone adds numbers using logic gates, carry bits, and binary — built step-by-step in Rust.
 section: math
 image: /assets/binary-part-I-thumb.png
