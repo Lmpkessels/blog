@@ -1,6 +1,6 @@
 ---
 title: What is binary
-html_title: Binary part-0| LukeFi
+html_title: Binary part-0 | LukeFi
 description: Introduction to binary. How your computer uses 0s and 1s, logic gates, and transistors to show data on your screen.
 section: math
 image: assets/binary-part-0-thumb.png

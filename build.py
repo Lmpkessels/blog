@@ -105,6 +105,12 @@ def build():
         desc    = (fm.get("description") or "")[:160]
         image   = fm.get("image", DEFAULT_IMAGE)
 
+         # html_title logic
+        if "html_title" in fm:
+            post_html_title = fm["html_title"]
+        else:
+            post_html_title = f"{title} | LukeFi"
+
         # convert Markdown
         md = markdown.Markdown(extensions=["tables", "fenced_code"])
         body_html = md.convert(body_md)
@@ -119,6 +125,7 @@ def build():
         canonical  = f"{SITE_URL}/content/{date.year}/{month_code}/{slug}.html"
 
         html_out = (POST_TPL
+            .replace("$html_title$", post_html_title)
             .replace("$title$", title)
             .replace("$date$", fmt_date_h(date))
             .replace("$body$", body_html)
