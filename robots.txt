@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.lukefi.com/sitemap.xml
+Sitemap: https://www.lmpkessels.com/sitemap.xml

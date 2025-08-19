@@ -23,19 +23,19 @@ FNAME_RE = re.compile(r"^(?P<y>\d{4})-(?P<m>\d{2})-(?P<d>\d{2})-(?P<slug>.+)\.md
 
 SECTION_LABELS = {
     "math": "Mathematics",
-    "hq": "Lukefi blog",
+    "hq": "Lkessels blog",
     "thinking": "Thinking Vault",
-    "misc": "Lukefi blog",  # fallback
+    "misc": "Lkessels blog",  # fallback
 }
 def label_for(sec: str) -> str:
     return SECTION_LABELS.get(sec.lower(), sec.title())
 
 # ---------- Section Titles (for <title> in <head>) ----------
 SECTION_TITLES = {
-    "math": "Mathematics | Lukefi blog",
-    "thinking": "Thinking Vault | Lukefi blog",
-    "hq": "Lukefi Headquarters — Lukefi blog",
-    "misc": "Lukefi Misc | Lukefi blog",
+    "math": "Mathematics | Lkessels blog",
+    "thinking": "Thinking Vault | Lkessels blog",
+    "hq": "Lukefi Headquarters | Lkessels blog",
+    "misc": "Lukefi Misc | Lkessels blog",
 }
 
 # ---------- Helpers ----------
@@ -109,7 +109,7 @@ def build():
         if "html_title" in fm:
             post_html_title = fm["html_title"]
         else:
-            post_html_title = f"{title} | Lukefi"
+            post_html_title = f"{title} | Lkessels blog"
 
         # convert Markdown
         md = markdown.Markdown(extensions=["tables", "fenced_code"])
@@ -153,8 +153,8 @@ def build():
         for d, t, url in all_posts
     ]
     root_home = (HOME_TPL
-        .replace("$html_title$", "Lukefi | blog")   # <title> in <head>
-        .replace("$section$", "Lukefi blog")
+        .replace("$html_title$", "Lkessels | blog")   # <title> in <head>
+        .replace("$section$", "Lkessels blog")
         .replace("$posts$", "\n".join(all_items))
     )
     (ROOT / "index.html").write_text(root_home, encoding="utf-8")
@@ -170,14 +170,14 @@ def build():
         ]
         label = label_for(sec)
         html = (HOME_TPL
-            .replace("$html_title$", SECTION_TITLES.get(sec, f"{label} | Lukefi"))  # <title>
+            .replace("$html_title$", SECTION_TITLES.get(sec, f"{label} | Lkessels"))  # <title>
             .replace("$section$", label)
             .replace("$posts$", "\n".join(items))
         )
         (HOME_DIR / f"{sec}.html").write_text(html, encoding="utf-8")
 
     # ----- Sitemap ----- #
-    nsmap = {"custom": "https://lukefi.com/ns"}
+    nsmap = {"custom": "https://lmpkessels.com/ns"}
     urlset = ET.Element("urlset", {
         "xmlns": "http://www.sitemaps.org/schemas/sitemap/0.9",
         **{f"xmlns:{k}": v for k, v in nsmap.items()}
