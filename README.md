@@ -32,7 +32,7 @@ Vitalik Buterin for inspiring the structure and simplicity.
 
 ## License
 
-[MIT License](https://opensource.org/license/mit)
+[MIT License](https://github.com/Lmpkessels/blog/blob/main/LICENSE-MIT)
 
 ## Status
 
