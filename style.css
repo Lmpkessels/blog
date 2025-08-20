@@ -13,19 +13,24 @@ body {
 }
 
 /****** TYPOGRAPHY & CONTENT *******/
+.homepage-header {
+  margin-top: 3.375rem;
+  margin-bottom: 0.25rem;
+}
+
 h2 {
   margin-top: 24px;
 }
 
 p {
-  margin-top: 12px;
+  margin-top: 0.75rem;
 }
 
 hr {
   border: none;
   height: 4px;
   background-color: #dcdcdc;
-  margin: 24px 0;
+  margin: 1.5rem 0;
 }
 
 a {
@@ -49,7 +54,7 @@ a:hover {
 }
 
 .post-ul {
-  margin: 24px 44px;
+  margin: 1.5rem 2.75rem;
 }
 
 /****** LAYOUT *******/
@@ -68,7 +73,7 @@ a:hover {
 }
 
 .post-list {
-  margin: 44px 4px;
+  margin: 2.75rem 0.25rem;
 }
 
 .date-and-link {
