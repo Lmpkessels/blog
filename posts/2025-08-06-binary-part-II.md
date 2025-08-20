@@ -180,7 +180,7 @@ So if we need to represent a negative number, we use 1s complement and 2s comple
 
 ## Closure
 
-If you’re interested in Systems, Rust, Comp-sci, Blockchain, and more follow along. To stay tuned in on the blog check out: [X/Twitter](https://x.com/lukefi_) where I’ll be posting when a blog goes live.
+If you’re interested in Systems, Rust, Comp-sci, Blockchain, and more follow along. To stay tuned in on the blog check out: [X/Twitter](https://x.com/lmpkessels) where I’ll be posting when a blog goes live.
 
 If you want programmed example where i simulate logic using functions check out: [binarySeries](https://github.com/Lmpkessels/binarySeries) where I have built an ALU from the gates up.
 

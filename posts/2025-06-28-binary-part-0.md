@@ -79,6 +79,6 @@ That’s it for now.
 
 I hope you like binary part 0, it’s part of my deeper journey into logic and computer systems. I’ll revisit and expand on it soon. If you have something to add, or see a gap in my thinking feel free to reach out.
 
-You can find me on [X/Twitter](https://x.com/lukefi_).
+You can find me on [X/Twitter](https://x.com/lmpkessels).
 
 If you want to see programmed examples where I simulate logic gates using Rust, then check out: [binarySeries](https://github.com/Lmpkessels/binarySeries)
