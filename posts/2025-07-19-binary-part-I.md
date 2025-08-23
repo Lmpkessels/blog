@@ -4,6 +4,7 @@ html_title: Binary part-I
 description: A clear visual intro to how your phone adds numbers using logic gates, carry bits, and binary — built step-by-step in Rust.
 section: math
 image: /assets/binary-part-I-thumb.png
+alternative: Binary addition: Borrow in • Sum • Carry out with truth tables and images.
 date: 2025-07-19
 slug: binary-part-i
 ---

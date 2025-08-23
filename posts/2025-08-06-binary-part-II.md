@@ -3,7 +3,8 @@ title: Binary subtraction explained
 html_title: Binary part-II
 description: Learn how binary subtraction works inside your CPU using logic gates like XOR, AND, OR, and NOT. This blog breaks down difference and borrow logic step-by-step with diagrams, truth tables, and 1’s & 2’s coACmplement examples.
 section: math
-image: /assets/binary-part-ii-Luke-blog.png
+image: assets/binary-part-ii-Luke-blog.png
+alternative: Binary subtraction: Carry in • Difference • Carry out with truth table, images, and 1s, 2s complement.
 date: 2025-08-06
 slug: binary-part-ii
 ---

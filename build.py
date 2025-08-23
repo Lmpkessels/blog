@@ -71,6 +71,12 @@ def dedupe(items):
             out.append((d, t, u))
     return out
 
+def safe_alt(text: str, limit: int = 420) -> str:
+    # strip any tags and collapse whitespace
+    text = re.sub(r"<[^>]+>", "", text)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text[:limit]
+
 # ---------- Build ----------
 def build():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -104,6 +110,10 @@ def build():
         title   = fm.get("title") or parse_title(body_md, md_path.stem)
         desc    = (fm.get("description") or "")[:160]
         image   = fm.get("image", DEFAULT_IMAGE)
+        alt = fm.get("alternative", "").strip()
+        if not alt:
+            alt = desc or re.sub(r"[-_]+", " ", slug)
+        alt = safe_alt(alt)
 
          # html_title logic
         if "html_title" in fm:
@@ -132,6 +142,7 @@ def build():
             .replace("$desc$", desc)
             .replace("$canonical$", canonical)
             .replace("$image$", image)
+            .replace("$alternative$", alt)
         )
 
         post_file.write_text(html_out, encoding="utf-8")
