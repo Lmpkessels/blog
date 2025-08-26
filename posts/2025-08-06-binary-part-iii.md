@@ -6,7 +6,7 @@ section: math
 image: assets/binary-part-ii-Luke-blog.png
 alternative: Binary subtraction: Carry in • Difference • Carry out with truth table, images, and 1s, 2s complement.
 date: 2025-08-06
-slug: binary-part-ii
+slug: binary-part-iii
 ---
 
 Today you’ll learn how binary subtraction works at the lowest level in your machine.

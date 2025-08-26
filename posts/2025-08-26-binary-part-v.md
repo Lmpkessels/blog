@@ -6,7 +6,7 @@ section: math
 image: /assets/binary-div-thumb.png
 alternative: Thumbnail graphic titled ‘Binary Division Explained’ in black, white. It shows the binary division example 10001 ÷ 101 = 11 remainder 10.
 date: 2025-08-26
-slug: binary-part-iv
+slug: binary-part-v
 ---
 
 Now we've seen how [binary starts at registers flows trough gates](https://lmpkessels.com/content/2025/2025-06/binary-part-i) to, [add](https://lmpkessels.com/content/2025/2025-07/binary-part-ii), [subtract](https://lmpkessels.com/content/2025/2025-08/binary-part-iii), and [multiply](https://lmpkessels.com/content/2025/2025-08/binary-part-iv) let's take a look at the last layer (for this series) **division**.

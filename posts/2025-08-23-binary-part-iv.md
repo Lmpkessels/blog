@@ -6,7 +6,7 @@ section: math
 image: assets/binary-multiply-thumb.png
 alternative: Binary multiplication: AND • SHIFT • ADD with 0101 × 1010 = 0110010 (50)
 date: 2025-08-23
-slug: binary-part-iii
+slug: binary-part-iv
 ---
 
 At the heart of computer performance lies binary multiplication, the process of combining numbers bit-by-bit.

@@ -3,22 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Binary part-III</title>
+    <title>Binary part-II</title>
     <link rel="canonical" href="https://lmpkessels.com/content/2025/2025-08/binary-part-iii.html" />
-    <meta name="description" content="Binary multiplication from first principles: AND, SHIFT, ADD. Full worked example 5×10, plus short recap on addition logic" />
+    <meta name="description" content="Learn how binary subtraction works inside your CPU using logic gates like XOR, AND, OR, and NOT. This blog breaks down difference and borrow logic step-by-step " />
 
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Binary multiplication explained" />
-    <meta property="og:description" content="Binary multiplication from first principles: AND, SHIFT, ADD. Full worked example 5×10, plus short recap on addition logic" />
+    <meta property="og:title" content="Binary subtraction explained" />
+    <meta property="og:description" content="Learn how binary subtraction works inside your CPU using logic gates like XOR, AND, OR, and NOT. This blog breaks down difference and borrow logic step-by-step " />
     <meta property="og:url" content="https://lmpkessels.com/content/2025/2025-08/binary-part-iii.html" />
-    <meta property="og:image" content="https://lmpkessels.com/assets/binary-multiply-thumb.png" />
+    <meta property="og:image" content="https://lmpkessels.com/assets/binary-part-ii-Luke-blog.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Binary multiplication explained" />
-    <meta name="twitter:description" content="Binary multiplication from first principles: AND, SHIFT, ADD. Full worked example 5×10, plus short recap on addition logic" />
-    <meta name="twitter:image" content="https://lmpkessels.com/assets/binary-multiply-thumb.png" />
-    <meta name="twitter:image:alt" content="Binary multiplication: AND • SHIFT • ADD with 0101 × 1010 = 0110010 (50)" />
-    <meta property="article:published_time" content="2025 Aug 23" />
+    <meta name="twitter:title" content="Binary subtraction explained" />
+    <meta name="twitter:description" content="Learn how binary subtraction works inside your CPU using logic gates like XOR, AND, OR, and NOT. This blog breaks down difference and borrow logic step-by-step " />
+    <meta name="twitter:image" content="https://lmpkessels.com/assets/binary-part-ii-Luke-blog.png" />
+    <meta name="twitter:image:alt" content="Binary subtraction: Carry in • Difference • Carry out with truth table, images, and 1s, 2s complement." />
+    <meta property="article:published_time" content="2025 Aug 06" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -90,10 +90,10 @@
 
           <!-- Title + meta -->
           <div class="header-full-post">
-            <h1>Binary multiplication explained</h1>
+            <h1>Binary subtraction explained</h1>
           </div>
           <div class="date-and-link">
-            <p class="post-date"><time datetime="2025 Aug 23">2025 Aug 23</time></p>
+            <p class="post-date"><time datetime="2025 Aug 06">2025 Aug 06</time></p>
             <a href="/index.html" class="nav-anchor">All posts</a>
           </div>
         </header>
@@ -103,139 +103,136 @@
         <br />
 
         <!-- >>> The Markdown content goes right here <<< -->
-        <main class="post-body"><p>At the heart of computer performance lies binary multiplication, the process of combining numbers bit-by-bit.</p>
-<p>Let's take a look at how it works.</p>
-<h2>1st principles of binary multiplication</h2>
-<p>To break it down, here you have the three logical operations used in binary multiplication, <strong>AND, SHIFT, ADD</strong>.</p>
-<ul class="post-ul">
-  <li><b>AND</b>: takes <b>each bit of B in isolation</b> and applies <b>AND</b> on the entire string of A <b>bit-by-bit</b>.</li>
-  <li><b>SHIFT</b>: Shift Left is performed every move down starting from 0, till all moves <i>(based on the range of B)</i> are performed.</li>
-  <li><b>ADD</b>: is used to add up the whole and get the product Sum in return.</li>
-</ul>
+        <main class="post-body"><p>Today you’ll learn how binary subtraction works at the lowest level in your machine.</p>
+<p>If you’re not familiar with binary check out <a href="https://www.lukefi.com/content/2025/2025-06/binary-part-I">binary part-I</a> here you’ll find out why binary is used and how it flows through components of your PC.</p>
+<h2>The 5 components in binary subtraction</h2>
+<p>In binary part-I, you used 5 components input A input B, Carry in, Sum and Carry out.</p>
+<p>For binary subtraction Carry in, Sum, and Carry out, become Borrow in, Difference and Borrow out.</p>
+<p>Input A. and B, remain a byte.
+<br /></p>
+<h2>How subtraction happens in your CPU</h2>
+<p>You already know your CPU uses logic gates to perform bit-by-bit operations.</p>
+<p>In subtraction we use a following combination of gates:</p>
+<p>For Difference: ((a XOR b) XOR borrow_in)
+And BorrowOut: (NOT(a) AND b) OR (NOT( a XOR b) AND borrow in)
+<br /></p>
+<h2>Difference explained</h2>
+<p>Difference is used to return the output after applying a bit-by-bit operation.</p>
+<p>When the operation is done; difference is used to store the remaining byte and give it in return.</p>
+<p>ex. When you subtract 17 - 1 using the calculator on your phone, your CPU goes to work, starting at a transistor, each bit flows bit-by-bit through logic gates, each difference is stored and a byte is returned.</p>
+<p>Now that we’ve covered what ‘difference’ means, let’s break it down and see how CPUs handle subtraction at the logic gate level.
+<br /></p>
+<h2>Difference under the hood</h2>
+<p>Figure 1.0 displays the difference in a diagram using 2X logic gate XOR this is the exact route your CPU follows when transiting bits.</p>
+<figure>
+<img
+src="/assets/difference_gate.png"
+alt="Figure 1.0: Difference logic simulation applying the XOR gate two times"
+class="default-img-setting"
+/>
 
-<p>For each bit of <strong>B</strong> (index i) we perform a move down, every move down is a Shift Left (starting at index 0) which creates a partial. Every partial is summed up using addition logic to get the multiplication end product.</p>
-<p>Let me walk you through an example using 5 X 10 (0101 X 1010) starting at <em>figure 1.0</em>.</p>
-<ul class="post-ul">
-  <li><b>A</b> is 0101 (5)</li>
-  <li><b>B</b> is 1010 (10)</li>
-</ul>
+<figcaption>
+<b>Figure 1.0:</b> Difference logic simulation applying the
+XOR gate two times only one, if <code>a &lt; b</code> OR Borrow out.
+</figcaption>
+</figure>
 
+<p>Bit A and bit B flow through the logic gate XOR which then returns a bit, that bit then flows to the next gate, XOR logic is applied again with Borrow in, and the final output is returned.
+<br /></p>
+<h2>Why XOR is used in Difference</h2>
+<p>XOR is used to compare two bits, it returns 1 if the bits are different and 0 if they’re the same. That’s why it’s ideal for calculating the bitwise difference.</p>
+<p>If you’re not familiar with XOR check out <a href="https://www.lukefi.com/content/2025/2025-07/binary-part-ii">binary-part-II</a> where you walk through a bit-by-bit XOR simulation using the basic gates, AND, NOT, and OR.</p>
+<p>Now let’s move to borrow out.
+<br /></p>
+<h2>Why Borrow out is needed</h2>
+<p>Because computers only store bits (0s and 1s) , going below 0 will cause underflow, which will cause us to borrow out.</p>
+<p>Borrow-out checks whether subtraction at a bit column requires borrowing.</p>
+<p>We need to borrow when input A is less than input B at that bit column.
+<br /></p>
+<h2>How borrow out flows through your CPU</h2>
+<p>Figure 1.1 shows Borrow out in a circuit simulation, using for different gates NOT, AND, OR, and XOR.</p>
+<figure>
+<img
+src="/assets/borrow-out-logic-simulation.png"
+alt="Figure 1.1: Borrow out logic of a 1-bit full subtraction adder using basic gates. Output is 1 when (NOT (A) AND B) or (CarryIn AND (NOT (A XOR B))) is 1."
+class="default-img-setting"
+/>
+
+<figcaption>
+<b>Figure 1.1:</b> Borrow out logic of a 1-bit full
+subtraction adder using basic gates. Output is 1 when (NOT (A)
+AND B) or (CarryIn AND (NOT (A XOR B))) is 1.
+</figcaption>
+</figure>
+
+<p>Starting at the top A flows through the NOT gate to the transistor of the AND gate where B is waiting together they flow through AND and a final bit is returned. If a bit is stored we need to borrow else we follow the next logic.</p>
+<p>A and B flow through XOR a bit is returned which then flows through not borrow in is waiting at the transistor of the AND gate where both bits now flow through together, if the return value is 1 bit then we need to borrow if not we don’t.</p>
+<p>Now you know how both Difference and Borrow out flow through logic gates lets walk through a table.
+<br /></p>
+<h2>Full table walkthrough</h2>
+<p>Figure 1.2 shows a subtraction full 8 bit adder with all five components. On the left hand side each bit’s index position is shown.</p>
 <figure>
   <table>
     <thead>
       <tr>
-        <th>Bit position</th>
-        <th>B[i]</th>
-        <th>(B[i] AND A)</th>
-        <th>Shift (<< i)</th>
-        <th>Partial product (7b)</th>
+        <th>Bit Position</th>
+        <th>A</th>
+        <th>B</th>
+        <th>Borrow In</th>
+        <th>Difference</th>
+        <th>Borrow Out</th>
       </tr>
     </thead>
     <tbody>
-      <tr><td>0</td><td>0</td><td>0000</td><td><< 0</td><td>XXX0000</td></tr>
-      <tr><td>1</td><td>1</td><td>0101</td><td><< 1</td><td>XX01010</td></tr>
-      <tr><td>2</td><td>0</td><td>0000</td><td><< 2</td><td>X000000</td></tr>
-      <tr><td>3</td><td>1</td><td>0101</td><td><< 3</td><td>0101000</td></tr>
+      <tr><td>Bit_0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>Bit_1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>Bit_2</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
+      <tr><td>Bit_3</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+      <tr><td>Bit_4</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+      <tr><td>Bit_5</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
+      <tr><td>Bit_6</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td></tr>
+      <tr><td>Bit_7</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
     </tbody>
   </table>
-  <figcaption><b>Figure 1.0:</b> Step table: for each bit of B, AND it with A, then shift left by its index to form a partial product.</figcaption>
+  <figcaption><b>Figure 1.2:</b> 8-Bit full subtraction adder.
+  </figcaption>
 </figure>
 
-<p>We mark unused positions with <strong>X which act as placeholders, in actual hardware these become 0s in register</strong>. So that the ALU can work with the same range in every bit-by-bit addition calculation, to get Sum and Carry out.</p>
-<p>If you're not familiar with binary addition check out <a href="https://lmpkessels.com/content/2025/2025-07/binary-part-ii">binary part-II</a>.</p>
-<p>Now let's apply binary addition row-by-row on each partial product.</p>
-<h2>Binary addition applied on Partial product</h2>
-<p>Short recap of Sum, and Carry out:</p>
-<ul class="post-ul">
-  <li><b>Sum:</b> A XOR B XOR Carry in</li>
-  <li><b>Carry out:</b> (A AND B) OR (Carry in AND (A XOR B))</li>
-</ul>
-
-<p><em><strong>Example:</strong> 1 + 1 with carry-in 0 gives sum = 0, carry = 1</em></p>
-<p>Starting bit-by-bit at <strong>Partial 0, and 1</strong> in <em>figure 1.1</em>, to get the Sum column then we repeat that process two more times.</p>
+<p>For this example let’s take the row of bit_2.</p>
 <figure>
-  <table>
-    <thead>
-      <tr>
-        <th>Bit position</th>
-        <th>Running sum</th>
-        <th>Next partial</th>
-        <th>Carry in</th>
-        <th>Sum</th>
-        <th>Carry out</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      <tr><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
-      <tr><td>2</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      <tr><td>3</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
-      <tr><td>4</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      <tr><td>5</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      <tr><td>6</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-    </tbody>
+  <table class="table-350px">
+    <tr>
+      <td>Bit_A</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Bit_B</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>Borrow in</td>
+      <td>0</td>
+    </tr>
   </table>
-  <figcaption><b>Figure 1.1:</b> Ripple-carry addition: adding Partial 0 and Partial 1 from Figure 1.0.</figcaption>
+  <figcaption>Table 1: Binary subtraction inputs</figcaption>
 </figure>
 
-<p><strong>NOTE:</strong> Bit 0 is rightmost least significant bit (LSB) moving to leftmost most significant bit (MSB).</p>
-<p>Now in <em>figure 1.2</em> we take Sum from <em>figure 1.0</em> and apply addition logic bit-by-bit with <strong>Partial 2</strong> of <em>figure 1.0</em>.</p>
-<figure>
-  <table>
-    <thead>
-      <tr>
-        <th>Bit position</th>
-        <th>Running sum</th>
-        <th>Next partial</th>
-        <th>Carry in</th>
-        <th>Sum</th>
-        <th>Carry out</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
-      <tr><td>2</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      <tr><td>3</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
-      <tr><td>4</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      <tr><td>5</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      <tr><td>6</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-    </tbody>
-  </table>
-  <figcaption><b>Figure 1.2:</b> Ripple-carry addition: adding the previous sum with Partial 2 from Figure 1.0.</figcaption>
-</figure>
-
-<p>Arriving at the last Partial, <strong>Partial 3</strong> in <em>figure 1.0</em>, we repeat addition logic for Sum and Carry out one last time.</p>
-<figure>
-  <table>
-    <thead>
-      <tr>
-        <th>Bit position</th>
-        <th>Running sum</th>
-        <th>Next partial</th>
-        <th>Carry in</th>
-        <th>Sum</th>
-        <th>Carry out</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
-      <tr><td>2</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-      <tr><td>3</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
-      <tr><td>4</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
-      <tr><td>5</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
-      <tr><td>6</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-    </tbody>
-  </table>
-  <figcaption><b>Figure 1.3:</b> Ripple-carry addition: adding the running sum with Partial 3 from Figure 1.0 to produce the final product.</figcaption>
-</figure>
-
-<p>After applying addition logic on all four arrays we end up with <strong>'0110010'</strong> (you can read it in the Sum column), which is integer <strong>50</strong>.</p>
-<p>That was binary multiplication.</p>
-<p>Like to stay updated and learn about Systems, Rust, Math, and more? Then you can follow me on <a href="https://x.com/lmpkessels">X/Twitter</a> where I'll be posting when a blog goes live.</p>
-<p>Want to see coded examples? Check, <a href="https://github.com/Lmpkessels/axiom.git">ALU</a> a 32-bit Arithmetic Logic Unit that goes from integers to bit-by-bit simulations through logic gates, supports ADD, SUB, MULTIPLY, DIV.</p>
-<p>Now go practice some <em>binary multiplication</em> till next time.</p></main>
+<p>We start at calculating the difference so we know what to write down at the Bit_2 column's position, so <code>((0 XOR 1) = 1) XOR 0) = 1</code>, and we now know 1 needs to be written down in the column of Bit_2.</p>
+<p>Next, we check if a borrow is needed: (NOT 0 = 1) AND 1 = 1. This already signals a borrow, but let’s complete the logic. (0 AND (0 XOR 1)) = 0.</p>
+<p>So, 1 OR 0 = 1, this confirms that borrow-out is 1.</p>
+<p>Based on the math you’re using the CPU decides if it’s unassigned, if it’s unassigned mathematics then the CPU calls an error called underflow and a borrow out is needed.</p>
+<p>If you’re using assigned math you'll simply go below zero using 2's complement.
+<br /></p>
+<h2>What is 1’s and 2’s complement</h2>
+<p>Since memory only stores 0s and 1s, going below 0 directly isn’t possible without causing an error while compiling.</p>
+<p>So if we need to represent a negative number, we use 1s complement and 2s complement.</p>
+<p>1’s complement flips all bits, e.x. 10101 becomes → 01010, when you look at the pattern you simply see that all 1s have become 0s and all 0s have become 1s.</p>
+<p>2’s complement flips all bits + adds 1 bit, e.x. 00110 becomes 11001 then one is added so it becomes 11010.
+<br /></p>
+<h2>Closure</h2>
+<p>If you’re interested in Systems, Rust, Comp-sci, Blockchain, and more follow along. To stay tuned in on the blog check out: <a href="https://x.com/lmpkessels">X/Twitter</a> where I’ll be posting when a blog goes live.</p>
+<p>If you want programmed example where i simulate logic using functions check out: <a href="https://github.com/Lmpkessels/alu">ALU</a> where I have built an ALU from the gates up.</p>
+<p>That’s it for now, keep in mind, “every program is an ALU at its lowest level” till the next one.</p></main>
       </div>
     </div>
 
