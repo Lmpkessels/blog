@@ -9,7 +9,7 @@ date: 2025-08-26
 slug: binary-part-iv
 ---
 
-Now we've seen how [binary starts at registers flows trough gates](https://lmpkessels.com/content/2025/2025-06/binary-part-0) to, [add](https://lmpkessels.com/content/2025/2025-07/binary-part-i), [subtract](https://lmpkessels.com/content/2025/2025-08/binary-part-ii), and [multiply](https://lmpkessels.com/content/2025/2025-08/binary-part-iii) let's take a look at the last layer (for this series) **division**.
+Now we've seen how [binary starts at registers flows trough gates](https://lmpkessels.com/content/2025/2025-06/binary-part-i) to, [add](https://lmpkessels.com/content/2025/2025-07/binary-part-ii), [subtract](https://lmpkessels.com/content/2025/2025-08/binary-part-iii), and [multiply](https://lmpkessels.com/content/2025/2025-08/binary-part-iv) let's take a look at the last layer (for this series) **division**.
 
 ## 1st principles of binary division
 

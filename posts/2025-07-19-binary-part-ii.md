@@ -1,12 +1,12 @@
 ---
 title: Binary addition explained
-html_title: Binary part-I
+html_title: Binary part-II
 description: A clear visual intro to how your phone adds numbers using logic gates, carry bits, and binary — built step-by-step in Rust.
 section: math
-image: /assets/binary-part-I-thumb.png
+image: /assets/binary-part-II-thumb.png
 alternative: Binary addition: Borrow in • Sum • Carry out with truth tables and images.
 date: 2025-07-19
-slug: binary-part-i
+slug: binary-part-ii
 ---
 
 Imagine you're about to time block 2 events for tomorrow.
@@ -17,7 +17,7 @@ In binary that’s 01111000 + 01001011.
 
 At the end of this blog you’ll have a deeper understanding of how computers, and even your phone think, to make bit-by-bit calculations in addition.
 
-If you’re not familiar with binary check out [binary-part-0](https://www.lukefi.com/content/2025/2025-06/binary-part-0) where we dive into the basics of binary.
+If you’re not familiar with binary check out [binary-part-i](https://www.lukefi.com/content/2025/2025-06/binary-part-i) where we dive into the basics of binary.
 <br />
 
 ## The 5 Parts Used in Binary Addition

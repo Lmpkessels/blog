@@ -1,12 +1,12 @@
 ---
 title: What is binary
-html_title: Binary part-0
+html_title: Binary part-I
 description: Introduction to binary. How your computer uses 0s and 1s, logic gates, and transistors to show data on your screen.
 section: math
-image: assets/binary-part-0-thumb.png
+image: assets/binary-part-i-thumb.png
 alternative: What is binary: an explanation of the binary system.
 date: 2025-06-28
-slug: binary-part-0
+slug: binary-part-i
 ---
 
 Imagine it’s Friday morning and you're reading the news on your laptop, then, suddenly, you wonder…

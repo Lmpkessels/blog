@@ -55,7 +55,7 @@ Let me walk you through an example using 5 X 10 (0101 X 1010) starting at _figur
 
 We mark unused positions with **X which act as placeholders, in actual hardware these become 0s in register**. So that the ALU can work with the same range in every bit-by-bit addition calculation, to get Sum and Carry out.
 
-If you're not familiar with binary addition check out [binary part-I](https://lmpkessels.com/content/2025/2025-07/binary-part-i).
+If you're not familiar with binary addition check out [binary part-II](https://lmpkessels.com/content/2025/2025-07/binary-part-ii).
 
 Now let's apply binary addition row-by-row on each partial product.
 
@@ -159,6 +159,6 @@ That was binary multiplication.
 
 Like to stay updated and learn about Systems, Rust, Math, and more? Then you can follow me on [X/Twitter](https://x.com/lmpkessels) where I'll be posting when a blog goes live.
 
-Want to see coded examples? [Click ALU](https://github.com/Lmpkessels/axiom.git) a 32-bit Arithmetic Logic Unit that goes from integers to bit-by-bit simulations through logic gates, supports ADD, SUB, MULTIPLY, DIV.
+Want to see coded examples? Check, [ALU](https://github.com/Lmpkessels/axiom.git) a 32-bit Arithmetic Logic Unit that goes from integers to bit-by-bit simulations through logic gates, supports ADD, SUB, MULTIPLY, DIV.
 
 Now go practice some _binary multiplication_ till next time.
