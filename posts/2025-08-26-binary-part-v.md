@@ -1,6 +1,6 @@
 ---
 title: Binary division explained
-html_title: Binary part-IV
+html_title: Binary part-V
 description: Understand binary long division from first principles. Walk through bit-by-bit division with clear tables, logic, and CPU perspective.
 section: math
 image: /assets/binary-div-thumb.png
@@ -9,7 +9,7 @@ date: 2025-08-26
 slug: binary-part-v
 ---
 
-Now we've seen how [binary starts at registers flows trough gates](https://lmpkessels.com/content/2025/2025-06/binary-part-i) to, [add](https://lmpkessels.com/content/2025/2025-07/binary-part-ii), [subtract](https://lmpkessels.com/content/2025/2025-08/binary-part-iii), and [multiply](https://lmpkessels.com/content/2025/2025-08/binary-part-iv) let's take a look at the last layer (for this series) **division**.
+Now we've seen how [binary starts at registers flows through gates](https://lmpkessels.com/content/2025/2025-06/binary-part-i) to, [add](https://lmpkessels.com/content/2025/2025-07/binary-part-ii), [subtract](https://lmpkessels.com/content/2025/2025-08/binary-part-iii), and [multiply](https://lmpkessels.com/content/2025/2025-08/binary-part-iv) let's take a look at the last layer (for this series) **division**.
 
 ## 1st principles of binary division
 
@@ -57,7 +57,7 @@ We take 10001 / 101 (17 / 5) and go through binary division bit-by-bit in **figu
   <figcaption><b>Figure 1.0:</b> Step-by-step binary long division of 10001 (17) ÷ 101 (5). Quotient = 11 (3), Remainder = 10 (2).</figcaption>
 </figure>
 
-As discussed above you can see that **subtraction is conditional**. It's only used when the divisor fits into current remainder. Otherwise, you carry on shifting the dividend down by one position.
+As discussed above you can see that **subtraction is conditional**. It's only used when the divisor fits into the current remainder. Otherwise, you carry on shifting the dividend down by one position.
 
 If you're not familiar with **binary subtraction** check out [binary part-II](https://lmpkessels.com/content/2025/2025-08/binary-part-ii) where I'll **walk you through binary subtraction bit-by-bit**, then you’ll be able to do row 3 and 4 yourself (if you aren’t already).
 

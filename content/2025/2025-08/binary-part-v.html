@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Binary part-IV</title>
+    <title>Binary part-V</title>
     <link rel="canonical" href="https://lmpkessels.com/content/2025/2025-08/binary-part-v.html" />
     <meta name="description" content="Understand binary long division from first principles. Walk through bit-by-bit division with clear tables, logic, and CPU perspective." />
 
@@ -103,7 +103,7 @@
         <br />
 
         <!-- >>> The Markdown content goes right here <<< -->
-        <main class="post-body"><p>Now we've seen how <a href="https://lmpkessels.com/content/2025/2025-06/binary-part-i">binary starts at registers flows trough gates</a> to, <a href="https://lmpkessels.com/content/2025/2025-07/binary-part-ii">add</a>, <a href="https://lmpkessels.com/content/2025/2025-08/binary-part-iii">subtract</a>, and <a href="https://lmpkessels.com/content/2025/2025-08/binary-part-iv">multiply</a> let's take a look at the last layer (for this series) <strong>division</strong>.</p>
+        <main class="post-body"><p>Now we've seen how <a href="https://lmpkessels.com/content/2025/2025-06/binary-part-i">binary starts at registers flows through gates</a> to, <a href="https://lmpkessels.com/content/2025/2025-07/binary-part-ii">add</a>, <a href="https://lmpkessels.com/content/2025/2025-08/binary-part-iii">subtract</a>, and <a href="https://lmpkessels.com/content/2025/2025-08/binary-part-iv">multiply</a> let's take a look at the last layer (for this series) <strong>division</strong>.</p>
 <h2>1st principles of binary division</h2>
 <p>CPUs don’t magically divide, they use the following logical operations.</p>
 <ul class="post-ul">
@@ -144,7 +144,7 @@
   <figcaption><b>Figure 1.0:</b> Step-by-step binary long division of 10001 (17) ÷ 101 (5). Quotient = 11 (3), Remainder = 10 (2).</figcaption>
 </figure>
 
-<p>As discussed above you can see that <strong>subtraction is conditional</strong>. It's only used when the divisor fits into current remainder. Otherwise, you carry on shifting the dividend down by one position.</p>
+<p>As discussed above you can see that <strong>subtraction is conditional</strong>. It's only used when the divisor fits into the current remainder. Otherwise, you carry on shifting the dividend down by one position.</p>
 <p>If you're not familiar with <strong>binary subtraction</strong> check out <a href="https://lmpkessels.com/content/2025/2025-08/binary-part-ii">binary part-II</a> where I'll <strong>walk you through binary subtraction bit-by-bit</strong>, then you’ll be able to do row 3 and 4 yourself (if you aren’t already).</p>
 <p>Well that was binary long division, division closes out this binary series.</p>
 <p>You now have <strong>add, subtract, multiply, and divide at the bit level</strong>. With these, you’ve built the full arithmetic core of a CPU.</p>

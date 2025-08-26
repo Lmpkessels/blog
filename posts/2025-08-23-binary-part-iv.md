@@ -1,6 +1,6 @@
 ---
 title: Binary multiplication explained
-html_title: Binary part-III
+html_title: Binary part-IV
 description: Binary multiplication from first principles: AND, SHIFT, ADD. Full worked example 5×10, plus short recap on addition logic
 section: math
 image: assets/binary-multiply-thumb.png
