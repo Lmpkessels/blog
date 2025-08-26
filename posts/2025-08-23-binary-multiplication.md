@@ -1,9 +1,9 @@
 ---
 title: Binary multiplication explained
 html_title: Binary part-III
-description: Binary multiplication from first principles: AND, SHIFT, ADD. Full worked example (5×10), plus short recap on addition logic
+description: Binary multiplication from first principles: AND, SHIFT, ADD. Full worked example 5×10, plus short recap on addition logic
 section: math
-image: /assets/binary-multiply-thumb.png
+image: assets/binary-multiply-thumb.png
 alternative: Binary multiplication: AND • SHIFT • ADD with 0101 × 1010 = 0110010 (50)
 date: 2025-08-23
 slug: binary-part-iii
