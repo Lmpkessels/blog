@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Binary Part VI</title>
+    <link rel="canonical" href="https://lmpkessels.com/content/2025/2025-09/binary-part-vi.html" />
+    <meta name="description" content="Learn how an ALU works, from logic gates to Rust implementation: ripple-carry adders, multiplication, division, and opcode control." />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Arithmetic Logic Unit (ALU) Explained" />
+    <meta property="og:description" content="Learn how an ALU works, from logic gates to Rust implementation: ripple-carry adders, multiplication, division, and opcode control." />
+    <meta property="og:url" content="https://lmpkessels.com/content/2025/2025-09/binary-part-vi.html" />
+    <meta property="og:image" content="https://lmpkessels.com//assets/thumb-alu-blog.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Arithmetic Logic Unit (ALU) Explained" />
+    <meta name="twitter:description" content="Learn how an ALU works, from logic gates to Rust implementation: ripple-carry adders, multiplication, division, and opcode control." />
+    <meta name="twitter:image" content="https://lmpkessels.com//assets/thumb-alu-blog.png" />
+    <meta name="twitter:image:alt" content="Black, white, and gray thumbnail showing logic gates connected to an ALU with labeled inputs (opcode, A) and output, alongside the title 'Arithmetic Logic Unit (ALU) Explained'." />
+    <meta property="article:published_time" content="2025 Sep 03" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/assets/lmpk-logo.ico" type="image/x-icon" />
+    <!-- IMPORTANT: point this at your published CSS path -->
+    <!-- If Netlify publishes /content, keep href="/style.css" and place style.css in /content -->
+    <link rel="stylesheet" href="/style.css" />
+    <!-- If you really keep it in /dist/style.css, change publish dir or this href accordingly. -->
+
+    <!-- Theme bootstrap -->
+    <script>
+      const savedTheme = localStorage.getItem("theme");
+      const prefersDark =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.remove("default-mode");
+      } else {
+        document.documentElement.classList.add("default-mode");
+      }
+    </script>
+  </head>
+  <body>
+    <div class="page-container">
+      <div class="content-wrapper">
+        <header>
+          <!-- Light / dark toggle -->
+          <div class="light-dark-toggle" id="theme-toggle">
+            <noscript>Toggle not shown. JavaScript disabled.</noscript>
+            <!-- Sun -->
+            <svg
+              class="toggle-sun"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
+              />
+            </svg>
+            <!-- Toggle -->
+            <div class="toggle-wrapper">
+              <div class="toggle-knob"></div>
+            </div>
+            <!-- Moon -->
+            <svg
+              class="toggle-moon"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+              />
+            </svg>
+          </div>
+
+          <!-- Title + meta -->
+          <div class="header-full-post">
+            <h1>Arithmetic Logic Unit (ALU) Explained</h1>
+          </div>
+          <div class="date-and-link">
+            <p class="post-date"><time datetime="2025 Sep 03">2025 Sep 03</time></p>
+            <a href="/index.html" class="nav-anchor">All posts</a>
+          </div>
+        </header>
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <!-- >>> The Markdown content goes right here <<< -->
+        <main class="post-body"><p>Every electronic device that works with data - <strong>your PC, phone, or smart TV</strong> - uses a Central Processing Unit (CPU), at the heart of every CPU lies an Arithmetic Logic Unit (ALU).</p>
+<p>Without the <strong>ALU</strong>, your CPU wouldn’t be able to make mathematical decisions. And everything inside your electronic device comes down to <strong>math at the bit level</strong>.</p>
+<p>If you're reading <em>Arithmetic Logic Unit (ALU) Explained</em> on your Phone or PC (probably not your TV), then you’re using an <strong>ALU</strong>.</p>
+<p>Now you know the importance of an ALU let's look at <strong>the components used to build an ALU</strong>.</p>
+<h2>The Components Used to Build an ALU</h2>
+<p>An Arithmetic Logic Unit (ALU) is built from many components:</p>
+<p><strong>Including:</strong> transistors, logic gates, adders (half/full), ripple-carry circuits, multiplexers, control logic, flags, and output registers.</p>
+<p>For the <strong>ALU</strong> I built in <strong>Rust</strong> the following operations are used: <strong>ripple-carry addition, ripple-carry subtraction, binary multiplication, and long division</strong>, all for <strong>unsigned math (&gt; 0)</strong>.</p>
+<p>These operations relied on the logic gates: <strong>AND, NOT, OR, XOR, and Shift Left</strong>.</p>
+<p>If you're not familiar with <strong>boolean logic</strong> or <strong>binary ADD, SUB, MULTIPLY, and DIV operations</strong> then you can dive deep into the concept of your choice at the <a href="/content/0000/math.html">Mathematics homepage</a>.</p>
+<p>Those were the components used to build an ALU. Now, let's see how the ALU works.</p>
+<h2>How an ALU Works</h2>
+<p>The job of an ALU is to constantly process data — also known as bits — which pass through transistors. Each transistor (there are about 25 billion in a Mac M3 chip) acts as a tiny switch (OPEN/CLOSED) before each gate. They work on electrons: when a small voltage is applied, the transistor “opens,” and when there’s no voltage, it “closes.”</p>
+<p>When it’s <strong>open</strong>, current can flow (representing a 1); when it’s <strong>closed</strong>, no current flows (representing a 0).</p>
+<p>When the bits are received at the register, they go through logic gates, perform billions of arithmetical and logical calculations in milliseconds, and form n-bit words. Those n-bit words are then sent to the output register and stored at the right address in RAM, so you can see the right patterns on your screen.</p>
+<p>Those patterns can be characters, digits, symbols, shapes, motion, and colors.</p>
+<p>Then we have <strong>opcode</strong> (control logic). These are patterns of bits, for example, <strong>a 6-bit opcode gives 64 possible patterns</strong>, each representing a different operation the ALU can perform. Which operations exist depends on how the ALU designer defines them.</p>
+<p>If you were an ALU designer, you could assign the pattern <code>0x000011 (3)</code> to multiplication. Then, every time the ALU sees that pattern, it knows to perform multiplication and uses logic gates (AND, OR, NOT) and a ripple-carry adder to get the result.</p>
+<p>So the ALU is always repeating this same cycle: <strong>opcode → function → output</strong>.</p>
+<p>You now know how an ALU works, so let's take a look at how building an ALU in Rust takes place.</p>
+<h2>Building an ALU in Rust</h2>
+<p>It all started with <strong>binary truth</strong> tables <strong>an amazing hands-on way to learn logic</strong> and how Boolean logic applies to binary numbers bit-by-bit.</p>
+<p>I got these ideas from a few resources, which you can find in the credentials section.</p>
+<p>Then I learned <strong>binary addition</strong> and how it works at the gate level, using pure logic for <strong>Sum</strong> and <strong>Carry Out</strong>. I built a full 32-bit ripple-carry adder in Rust (starting with a half-adder).</p>
+<p>After that, I moved to <strong>binary subtraction</strong>, learned about <strong>Difference</strong> and <strong>Borrow/Carry Out</strong>, and built a 32-bit ripple-carry subtractor.</p>
+<p>At first, I thought that was enough — but then I realized: what is an ALU without <strong>multiplication and division</strong>?</p>
+<p>So I built <strong>bit shifters</strong> using loops, subtraction, and addition, and then used those to implement <strong>binary multiplication</strong> with <strong>AND, SHIFT, and ADD</strong>.</p>
+<p>Finally, I built <strong>binary division</strong> using <strong>if...else, subtraction</strong>, and <strong>shift</strong>. With that, I completed the final <strong>arithmetic layer</strong> for this ALU.</p>
+<p>Once all mental models were <strong>built and tested in Rust</strong>, I combined them into a single Arithmetic Logic Unit (ALU), which uses:</p>
+<ul class="post-ul">
+  <li>Opcode</li>
+  <li>Transformer: Integer to Binary</li>
+  <li>Arithmetic functions</li>
+  <li>Transformer: Binary to Integer</li>
+</ul>
+
+<p>With these two transformers, the ALU now works with integers as input and performs bit-by-bit arithmetic under the hood.</p>
+<p>Well, that was the process of building an ALU in Rust. Here are the mental models I've gained.</p>
+<h2>The Mental Models I've Gained</h2>
+<p>The deepest mental model I've gained is that <strong>every program we write is like an ALU</strong> where the ALU is the parent function that takes an opcode and calls the right child function.</p>
+<p>Those functions then perform operations, sometimes working together.</p>
+<p>Just like in any program, there is one main function (the parent) that controls the flow, while child functions do their tasks but cannot control the parent.</p>
+<p>Another important lesson I learned is <strong>overflow</strong>, which happens when the final carry-out of an operation cannot fit inside its byte or word at the MSB. In Rust, this causes a <strong>runtime panic in debug mode</strong> or wraps around silently in release mode.</p>
+<p>This taught me why bit-width matters in arithmetic and why ALUs must handle overflow flags.</p>
+<h2>Credentials</h2>
+<p>I thank <a href="https://blog.codingconfessions.com/p/seeing-the-matrix?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer"><em>Understanding Computer Organization from First Principles</em></a>, chapters <strong>1 - 3</strong> of <a href="https://archive.org/details/nand2tetris" target="_blank" rel="noopener noreferrer"><em>Nand2Tetris</em></a> and, chapters 1–8 of <a href="https://bobcarp.wordpress.com/wp-content/uploads/2014/07/code-charles-petzold.pdf" target="_blank" rel="noopener noreferrer"><em>Code: The Hidden Language of Computer Hardware and Software</em></a>.</p>
+<p>This blog and these books shaped my basic understanding of how PC hardware works at its lowest level.</p>
+<p>Then we have <a href="https://doc.rust-lang.org/book/" target="_blank" rel="noopener noreferrer"><em>Rust: The Programming Language</em></a>, which forced me to think about hardware deeply - thanks to data types, data structures, stack/heap memory, lifetimes, borrowing, and much more.</p>
+<h2>Stay Updated</h2>
+<p>If you want to stay updated on topics like Systems Thinking, Clear Thinking, Rust, Crypto, and Philosophy, check out <a href="https://x.com/lmpkessels" target="_blank" rel="noopener noreferrer"><em>X/Twitter</em></a>, here I’ll update you when new blogs go live, and share the mental models I’m gaining.</p>
+<p>If you want to see the code or fork the Arithmetic Logic Unit, <a href="https://github.com/Lmpkessels/alu" target="_blank" rel="noopener noreferrer"><em>click here</em></a> to go to the repository.</p>
+<p>If you’ve ever built an ALU, let me know what the hardest part was for you.</p>
+<p>You can reach me at <a href="mailto:l@lmpkessels.com">l@lmpkessels.com</a> or, send me a DM on <a href="https://x.com/lmpkessels" target="_blank" rel="noopener noreferrer"><em>X/Twitter</em></a>.</p>
+<p>Till the next one.</p></main>
+      </div>
+    </div>
+
+    <!-- Toggle script -->
+    <script>
+      const toggle = document.getElementById("theme-toggle");
+      toggle.addEventListener("click", () => {
+        document.documentElement.classList.toggle("default-mode");
+        const mode = document.documentElement.classList.contains("default-mode")
+          ? "light"
+          : "dark";
+        localStorage.setItem("theme", mode);
+      });
+    </script>
+  </body>
+</html>
