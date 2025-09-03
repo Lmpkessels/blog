@@ -4,6 +4,7 @@ html_title: --snip-- | LukeFi
 description: --snip-- (Short SEO summary (<=160 chars))
 section: math
 image: /assets/--snip--
+alternative: --snip--
 date: --snip--
 slug: --snip--
 ---
@@ -107,6 +108,9 @@ slug: --snip--
 
 <!-- Unordered list for full posts -->
 <ul class="post-ul">
-  <li></li>
-  <li></li>
+  <li><b></b></li>
+  <li><b></b></li>
+  <li><b></b></li>
 </ul>
+
+<a href="--snip--" target="_blank" rel="noopener noreferrer"><em>--snip--</em></a>
