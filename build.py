@@ -160,7 +160,7 @@ def build():
     all_posts = dedupe(all_posts)
     all_items = [
         f'<li class="post-li"><span class="post-date">{fmt_date_h(d)}</span> '  
-        f'<h2><a href="{url}" class="content-header">{t}</a></h2></li>'
+        f'<h2 class="h2-home"><a href="{url}" class="content-header">{t}</a></h2></li>'
         for d, t, url in all_posts
     ]
     root_home = (HOME_TPL
@@ -176,7 +176,7 @@ def build():
         posts = dedupe(posts)
         items = [
             f'<li class="post-li"><span class="post-date">{fmt_date_h(d)}</span> '
-            f'<h2><a href="{url}" class="content-header">{t}</a></h2></li>'
+            f'<h2 class="h2-home"><a href="{url}" class="content-header">{t}</a></h2></li>'
             for d, t, url in posts
         ]
         label = label_for(sec)
