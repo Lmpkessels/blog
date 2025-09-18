@@ -129,7 +129,7 @@
 <p>To access each index in K and M and compress the message a 0..63 round loop is used.</p>
 <p><i><b>NOTE:</b> All additions are done with modulo 2<sup>32</sup>.</i></p>
 <ul class="post-ul">
-  <li><b>T1 = </b>h + Σ₁(e) + Ch(e,f,g) + K[i] + W[i]</li>
+  <li><b>T1 = </b>h + Σ₁(e) + Ch(e,f,g) + K[i] + M[i]</li>
   <li><b>T2 = </b>Σ₀(a) + Maj(a,b,c)</li>
 </ul>
 
