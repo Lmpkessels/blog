@@ -23,6 +23,7 @@ FNAME_RE = re.compile(r"^(?P<y>\d{4})-(?P<m>\d{2})-(?P<d>\d{2})-(?P<slug>.+)\.md
 
 SECTION_LABELS = {
     "math": "Mathematics",
+    "cryptography": "Cryptography",
     "hq": "lkessels blog",
     "thinking": "Thinking Vault",
     "misc": "lkessels blog",  # fallback
@@ -33,6 +34,7 @@ def label_for(sec: str) -> str:
 # ---------- Section Titles (for <title> in <head>) ----------
 SECTION_TITLES = {
     "math": "Mathematics | lkessels blog",
+    "cryptography": "Cryptography | lkessels blog",
     "thinking": "Thinking Vault | lkessels blog",
     "hq": "lkessels Headquarters | lkessels blog",
     "misc": "lkessels Misc | lkessels blog",
