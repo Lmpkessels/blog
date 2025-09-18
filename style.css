@@ -70,12 +70,16 @@ h2 {
 }
 
 p {
-  font-size: 17px;
   line-height: 1.5;
   max-width: 70ch;
   margin-top: 0.75rem;
   margin-bottom: 1em;
   color: var(--text);
+}
+
+li,
+p {
+  font-size: 17px;
 }
 
 hr {
@@ -273,6 +277,12 @@ figcaption {
   font-style: italic;
 }
 
+.table-175px {
+  max-width: 175px;
+  width: 100%;
+  align-items: center;
+}
+
 .table-350px {
   max-width: 350px;
   width: 100%;
@@ -293,7 +303,8 @@ figcaption {
     font-size: 20px;
     font-weight: 600;
   }
-  p {
+  p,
+  li {
     font-size: 16px;
   }
 }
