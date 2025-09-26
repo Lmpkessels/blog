@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HMAC for SHA256 | Lmpkessels</title>
+    <link rel="canonical" href="https://lmpkessels.com/content/2025/2025-09/hmac-for-sha256.html" />
+    <meta name="description" content="Step-by-step HMAC implementation in Rust using SHA256. Includes Rust code examples, key normalization, XOR with ipad/opad, and test verification." />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="HMAC implementation for SHA256" />
+    <meta property="og:description" content="Step-by-step HMAC implementation in Rust using SHA256. Includes Rust code examples, key normalization, XOR with ipad/opad, and test verification." />
+    <meta property="og:url" content="https://lmpkessels.com/content/2025/2025-09/hmac-for-sha256.html" />
+    <meta property="og:image" content="https://lmpkessels.com//assets/hmac-sha256-thumb.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="HMAC implementation for SHA256" />
+    <meta name="twitter:description" content="Step-by-step HMAC implementation in Rust using SHA256. Includes Rust code examples, key normalization, XOR with ipad/opad, and test verification." />
+    <meta name="twitter:image" content="https://lmpkessels.com//assets/hmac-sha256-thumb.jpg" />
+    <meta name="twitter:image:alt" content="Dark minimalist thumbnail showing binary code with bold text: HMAC SHA256 Rust." />
+    <meta property="article:published_time" content="2025 Sep 26" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-rust.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/assets/lmpk-logo.ico" type="image/x-icon" />
+    <!-- IMPORTANT: point this at your published CSS path -->
+    <!-- If Netlify publishes /content, keep href="/style.css" and place style.css in /content -->
+    <link rel="stylesheet" href="/style.css" />
+    <!-- If you really keep it in /dist/style.css, change publish dir or this href accordingly. -->
+
+    <!-- Theme bootstrap -->
+    <script>
+      const savedTheme = localStorage.getItem("theme");
+      const prefersDark =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.remove("default-mode");
+      } else {
+        document.documentElement.classList.add("default-mode");
+      }
+    </script>
+  </head>
+  <body>
+    <div class="page-container">
+      <div class="content-wrapper">
+        <header>
+          <!-- Light / dark toggle -->
+          <div class="light-dark-toggle" id="theme-toggle">
+            <noscript>Toggle not shown. JavaScript disabled.</noscript>
+            <!-- Sun -->
+            <svg
+              class="toggle-sun"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
+              />
+            </svg>
+            <!-- Toggle -->
+            <div class="toggle-wrapper">
+              <div class="toggle-knob"></div>
+            </div>
+            <!-- Moon -->
+            <svg
+              class="toggle-moon"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+              />
+            </svg>
+          </div>
+
+          <!-- Title + meta -->
+          <div class="header-full-post">
+            <h1>HMAC implementation for SHA256</h1>
+          </div>
+          <div class="date-and-link">
+            <p class="post-date"><time datetime="2025 Sep 26">2025 Sep 26</time></p>
+            <a href="/index.html" class="nav-anchor">All posts</a>
+          </div>
+        </header>
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <!-- >>> The Markdown content goes right here <<< -->
+        <main class="post-body"><p>HMAC (Hash Message Authentication Code) is a mechanism that combines a cryptographic hash function with a secret key. It ensures authenticity (the user knows it came from the right sender) and integrity (the user knows it wasn’t changed).</p>
+<p>In real-world usage, every secure <strong>API call</strong>, <strong>crypto wallet</strong>, or <strong>payment processor</strong> you use today relies on HMAC. Without it, attackers could forge requests or alter data.</p>
+<p>Let's start with the 9 primitives used in <strong>HMAC</strong>.</p>
+<h2>The 9 primitives used in HMAC</h2>
+<ol class="post-ol">
+    <li>check the size of the block (b bytes).</li>
+    <li>a key (K).</li>
+    <li>a fixed-size key (k0), identical to the block size.</li>
+    <li>ipad (inner padding).</li>
+    <li>opad (outer padding).</li>
+    <li>XOR logic (to flip the bits).</li>
+    <li>a message in bytes.</li>
+    <li>appending.</li>
+    <li>the hash function of choice (for this blog that'll be SHA256).</li>
+</ol>
+
+<p>Now you know the 9 primitives used in <strong>HMAC</strong>, let's look at how the key is <strong>normalized</strong> to <strong>k0</strong> so it matches the block-bytes (64 bytes for SHA256).</p>
+<h2>Normalizing k0 to b-bytes</h2>
+<p>First we make sure the key matches the right block-size (b-bytes) equaling 64 bytes or 512 bits, since 64 * 8 = 512. We use <strong>if else logic</strong> to normalize the key to the right size.</p>
+<p>Here is the <strong>if else logic</strong> we use to normalize the key to variable k0.</p>
+<ul class="post-ul">
+  <li><b>If</b> k is equal to b bytes, then k becomes k0</li>
+  <li><b>If</b> k is less than b bytes, append all 0s to k until k is b bytes (for SHA256 if k is 23 bytes or 184 bits than append 41 bytes or 328 bits to k) then k becomes k0.</li>
+  <li><b>If</b> k is greater than b-bytes hash k such that k becomes less than b-bytes and append all 0s to make k equal to b-bytes, then k becomes k0.</li>
+</ul>
+
+<p>Let's look at <strong><em>Figure 1.0</em></strong> to see how it looks in Rust:</p>
+<figure>
+<pre><code class="language-rust">
+pub fn get_right_block_size(k: &[u8]) -> Vec<u8> {
+    let mut k0: Vec<u8> = k.to_vec();
+    let mut key_length = k0.len();
+    let block_size = 64;
+
+    // k = k0 if key length == block_size.
+    if key_length == block_size {
+        return k0;
+    };
+
+    // Hash k0 and append 0s if key_length > block_size.
+    if key_length > block_size {
+        k0 = sha256(&k0).to_vec();
+        let mut k_l = k0.len();
+        while k_l < block_size {
+            k0.push(0x00);
+            k_l += 1;
+        };
+    };
+
+    // Append all 0s if key_length < block_size.
+    if key_length < block_size {
+        let mut k_l = k.len();
+        while k_l < block_size {
+            k0.push(0x00);
+            k_l += 1;
+        };
+    };
+
+    k0
+
+}
+</code></pre>
+
+<figcaption><b>Figure 1.0</b>: Rust code normalizing HMAC keys for SHA256</figcaption>
+</figure>
+
+<p>Now, depending on the size of the key, an <strong>if</strong> branch is chosen and the key is normalized to the right size.</p>
+<p>When the key is normalized, we use it with <strong>ipad, opad, XOR</strong>, and <strong>the message</strong> to <strong>authenticate the message</strong>. Let's look at Authenticating the key so you can see how the process takes place.</p>
+<h2>Authenticating the key</h2>
+<p>To authenticate the key we use <strong>ipad</strong> (inner padding) which is an array of <strong>64 times x'36'</strong> (HEX 36; 0011_0110) which is <strong>XOR'd with the normalized key</strong>, and stored in an array of 64 bytes with the updated <strong>HEX values</strong> after <strong>ipad ^ k0</strong> is computed.</p>
+<p>After updating the array with <strong>ipad ^ k0</strong> we append the message to the updated array, and then <strong>((ipad ^ k0) || msg) is hashed with SHA256</strong>, in equation it's: <strong>SHA256((ipad ^ k0) || msg)</strong>.</p>
+<p>For <strong>opad</strong> (outer padding) we repeat the same process, <strong>opad</strong> is an array that contains <strong>64 times x'5c'</strong> (HEX 5c; 0101_1100) those hex values are <strong>XOR'd with the normalized key (k0)</strong>, after k0 is authenticated with opad, it gets stored in an array with the updated <strong>HEX values</strong> after the computation <strong>opad ^ k0</strong>.</p>
+<p>Let's look at the bigger picture in <strong><em>figure 1.1</em></strong> where the HMAC flow is displayed.</p>
+<figure>
+<pre class="diagram-block">
+            Key (K)
+              |
+       Normalize to blocksize
+              ↓
+            K0
+              |
+   ┌──────────┴──────────┐
+   │                     │
+K0 ⊕ ipad           K0 ⊕ opad
+   │                     │
+   + Message             + (Hash of left side)
+   │                     │
+   SHA256 ---------------┘
+              ↓
+         Final HMAC
+</pre>
+
+<figcaption><b>Figure 1.1:</b></figcaption>
+</figure>
+
+<p>Now you've seen the flow of HMAC in figure 1.1., let's take a look at <strong><em>figure 1.2</em></strong> where you'll see it programmed in <strong>Rust</strong>.</p>
+<figure>
+<pre><code class="language-rust">
+pub fn hmac(k: &[u8], m: &[u8]) -> [u8; 32] {
+    let mut result: Vec<u8> = Vec::new();
+    let mut ipad: Vec<u8> = vec![0x36u8; 64];
+    let mut opad: Vec<u8> = vec![0x5cu8; 64];
+
+    // Vector ipad[i] and opad[i] XORed with k[i].
+    for i in 0..64 {
+        ipad[i] ^= k[i];
+        opad[i] ^= k[i];
+    };
+
+    let msg: Vec<u8> = m.to_vec();
+    let msg_len = m.len();
+
+    // ((K0 ^ ipad) || text)).
+    let mut j = 0;
+    while j < msg_len {
+        ipad.push(msg[j]);
+        j += 1;
+    };
+
+    // H((K0 ^ ipad) || text)).
+    let sha = sha256(&ipad);
+
+    // ((K0 ^ opad )|| H((K0 ^ ipad) || text))
+    for k in 0..32 {
+        opad.push(sha[k]);
+    };
+
+    // h((K0 ^ opad )|| H((K0 ^ ipad) || text)).
+    sha256(&opad)
+
+}
+</code></pre>
+
+<figcaption><b>Figure 1.2</b>: Inner and outer pad authentication process in Rust</figcaption>
+</figure>
+
+<p>After this process, we append the equation <strong>SHA256((ipad ^ K0) || msg)</strong> to <strong>(opad ^ K0)</strong> after that we have <strong>((opad ^ k) || SHA256((ipad ^ k) || msg))</strong>.</p>
+<p>When we append opad to ipad the equation is hashed again: <strong>SHA256((opad ^ k) || SHA256((ipad ^ k) || msg))</strong>, and the final HMAC is a 32-byte output (since SHA-256 always returns 256 bits).</p>
+<p>In <strong><em>figure 1.3</em></strong> you can read an edge test case as a visual example, programmed in <strong>Rust</strong> to verify correctness.</p>
+<figure>
+<pre><code class="language-rust">
+#[test]
+fn brown_fox() {
+    let k = get_right_block_size(b"key");
+    let msg = b"The quick brown fox jumps over the lazy dog";
+
+    let result = hmac(&k, msg);
+    let expected = [
+      0xf7, 0xbc, 0x83, 0xf4, 0x30, 0x53, 0x84, 0x24,
+      0xb1, 0x32, 0x98, 0xe6, 0xaa, 0x6f, 0xb1, 0x43,
+      0xef, 0x4d, 0x59, 0xa1, 0x49, 0x46, 0x17, 0x59,
+      0x97, 0x47, 0x9d, 0xbc, 0x2d, 0x1a, 0x3c, 0xd8,
+    ];
+
+    assert_eq!((result), (expected));
+
+}
+
+</code></pre>
+
+<figcaption><b>Figure 1.3</b>: Edge test verifying correctness of HMAC implementation</figcaption>
+</figure>
+
+<p>If you’d like a deeper dive into edge test cases, take a look at <a href="https://www.rfc-editor.org/rfc/rfc4231">RFT Home</a> this is the website where I got the tests.</p>
+<p>That’s it. Now you know how <strong>HMAC authenticates your key with SHA256</strong>.</p>
+<h2>Closing</h2>
+<p>If you're into Systems Thinking, Clear Thinking, Rust, Crypto, and Philosophy, check out <a href="https://x.com/lmpkessels" target="_blank" rel="noopener noreferrer"><em>X/Twitter</em></a>, here I’ll share thoughts and update when new blogs go live.</p>
+<p>For the full Rust HMAC SHA256 implementation, check out my repo <a href="https://github.com/Lmpkessels/crypto-primitives.git" target="_blank" rel="noopener noreferrer"><em>crypto-primitives</em></a> to see (or clone) the repository.</p>
+<p>If you're building in the crypto space and see areas for improvement, reach me at: <a href="mailto:l@lmpkessels.com">l@lmpkessels.com</a> or, send me a DM on <a href="https://x.com/lmpkessels" target="_blank" rel="noopener noreferrer"><em>X/Twitter</em></a>.</p>
+<p>Until the next one.</p></main>
+      </div>
+    </div>
+
+    <!-- Toggle script -->
+    <script>
+      const toggle = document.getElementById("theme-toggle");
+      toggle.addEventListener("click", () => {
+        document.documentElement.classList.toggle("default-mode");
+        const mode = document.documentElement.classList.contains("default-mode")
+          ? "light"
+          : "dark";
+        localStorage.setItem("theme", mode);
+      });
+    </script>
+  </body>
+</html>
