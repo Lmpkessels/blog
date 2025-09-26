@@ -106,6 +106,14 @@ slug: --snip--
   <figcaption><b>--snip--</b>--snip--</figcaption>
 </figure>
 
+<figure>
+<pre><code class="language-rust">
+--snip--
+</code></pre>
+
+<figcaption>--snip--</figcaption>
+</figure>
+
 <!-- Unordered list for full posts -->
 <ul class="post-ul">
   <li><b></b></li>
