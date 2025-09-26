@@ -18,7 +18,8 @@ body {
   color: var(--text);
 }
 
-/******** THEME TOKENS (Dark as default; add .default-mode to <html> for Light) ********/
+/******** THEME TOKENS ********/
+/* Dark as default; add .default-mode to <html> for Light */
 :root {
   --bg: #0a0f1c;
   --text: #ffffff;
@@ -27,7 +28,7 @@ body {
   --primary: #4f69c4;
   --border: #2a3550;
   --hr: #22304a;
-  --accent: #4f69c4; /* toggle bg in dark */
+  --accent: #4f69c4;
 }
 
 html.default-mode {
@@ -38,15 +39,10 @@ html.default-mode {
   --primary: #4f69c4;
   --border: #dcdcdc;
   --hr: #dcdcdc;
-  --accent: #f69c3d; /* toggle bg in light */
+  --accent: #f69c3d;
 }
 
 /******** TYPOGRAPHY ********/
-.homepage-header {
-  margin-top: 3.375rem;
-  margin-bottom: 0.25rem;
-}
-
 h1 {
   font-size: 2.25rem; /* ~36px */
   line-height: 1.2;
@@ -69,17 +65,17 @@ h2 {
   margin-top: 1em;
 }
 
-p {
+p,
+li {
+  font-size: 17px;
   line-height: 1.5;
-  max-width: 70ch;
-  margin-top: 0.75rem;
-  margin-bottom: 1em;
   color: var(--text);
 }
 
-li,
 p {
-  font-size: 17px;
+  max-width: 70ch;
+  margin-top: 0.75rem;
+  margin-bottom: 1em;
 }
 
 hr {
@@ -105,10 +101,84 @@ a:hover {
   color: var(--muted);
 }
 
-/******** LISTS / POSTS ********/
-.post-ul {
+.content-header {
+  color: var(--muted);
+  transition: 0.3s ease;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.content-header:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+/******** CODE BLOCKS ********/
+pre {
+  background: #0d1117; /* dark GitHub style */
+  color: #c9d1d9;
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 1.5em 0;
+}
+
+code {
+  font-family: "Fira Code", "JetBrains Mono", monospace;
+  background: #161b22;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.95em;
+}
+
+/* Syntax highlighting */
+.token.keyword {
+  color: #ff7b72;
+}
+.token.string {
+  color: #a5d6ff;
+}
+.token.function {
+  color: #d2a8ff;
+}
+.token.comment {
+  color: #8b949e;
+  font-style: italic;
+}
+.token.number {
+  color: #79c0ff;
+}
+
+/******** DIAGRAM BLOCK ********/
+.diagram-block {
+  display: flex;
+  justify-content: center;
+  background: #f4f4f4;
+  color: #111;
+  font-family: "Fira Code", monospace;
+  font-size: 15px;
+  line-height: 1.4;
+  padding: 16px;
+  border-radius: 6px;
+  overflow-x: auto;
+  white-space: pre;
+  margin: 2em 0;
+  border: 1px solid var(--border);
+}
+
+html:not(.default-mode) .diagram-block {
+  background: #161b22;
+  color: #c9d1d9;
+}
+
+/******** POSTS & LISTS ********/
+.post-ul,
+.post-ol {
   margin: 1.5rem 2.75rem;
 }
+
 .post-li {
   list-style: none;
   margin-bottom: 44px;
@@ -131,24 +201,12 @@ a:hover {
   width: 100px;
 }
 
-.content-header {
-  color: var(--muted);
-  transition: 0.3s ease;
-  text-decoration: none;
-  font-weight: 400;
-}
-.content-header:hover {
-  color: var(--primary);
-  text-decoration: underline;
-}
-
-/* Optional helper */
 .link-category {
   display: inline-block;
   padding: 8px 4px;
-  text-decoration: none;
   width: 100px;
   color: var(--muted);
+  text-decoration: none;
 }
 
 .header-full-post {
@@ -164,6 +222,12 @@ img {
   height: auto;
   margin: 0 auto;
   border-radius: 4px;
+}
+
+img.code-block {
+  max-height: 650px;
+  width: 500px;
+  overflow: auto;
 }
 
 /******** LAYOUT ********/
@@ -186,6 +250,7 @@ img {
   display: flex;
   justify-content: flex-end;
 }
+
 .whole-toggle {
   height: 22px;
 }
@@ -209,7 +274,6 @@ img {
   transition: all 0.3s ease;
 }
 
-/* knob positions for light vs dark */
 html.default-mode .toggle-knob {
   right: 24px;
 }
@@ -228,7 +292,7 @@ html:not(.default-mode) .toggle-knob {
   width: 18px;
 }
 
-/******** TABLES (FIGURE WRAP) ********/
+/******** TABLES ********/
 figure {
   display: flex;
   flex-direction: column;
@@ -239,7 +303,6 @@ figure {
 
 figure table {
   width: 98%;
-  max-width: 100%;
   table-layout: fixed;
   border-collapse: separate;
   border-spacing: 0;
@@ -271,22 +334,17 @@ figcaption {
   text-align: center;
   font-size: 0.9em;
   color: var(--muted);
-  margin-top: 0.5em;
-  margin-left: 2.5rem;
-  margin-right: 2.5rem;
+  margin: 0.5em 2.5rem 0;
   font-style: italic;
 }
 
 .table-175px {
   max-width: 175px;
   width: 100%;
-  align-items: center;
 }
-
 .table-350px {
   max-width: 350px;
   width: 100%;
-  align-self: center;
 }
 
 /******** RESPONSIVE ********/
@@ -313,7 +371,6 @@ figcaption {
 :root {
   scrollbar-gutter: stable;
 }
-
 @supports not (scrollbar-gutter: stable) {
   html {
     overflow-y: scroll;
