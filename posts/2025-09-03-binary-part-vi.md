@@ -45,7 +45,7 @@ Those patterns can be characters, digits, symbols, shapes, motion, and colors.
 
 Then we have **opcode** (control logic). These are patterns of bits, for example, **a 6-bit opcode gives 64 possible patterns**, each representing a different operation the ALU can perform. Which operations exist depends on how the ALU designer defines them.
 
-If you were an ALU designer, you could assign the pattern `0x000011 (3)` to multiplication. Then, every time the ALU sees that pattern, it knows to perform multiplication and uses logic gates (AND, OR, NOT) and a ripple-carry adder to get the result.
+If you were an ALU designer, you could assign the pattern **0x000011 (3)** to multiplication. Then, every time the ALU sees that pattern, it knows to perform multiplication and uses logic gates (AND, OR, NOT) and a ripple-carry adder to get the result.
 
 So the ALU is always repeating this same cycle: **opcode → function → output**.
 
