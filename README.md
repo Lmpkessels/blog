@@ -42,4 +42,4 @@ The skeleton is complete. I'll keep improving it as I go.
 
 Found an issue or have an idea? [Click Here](https://github.com/Lmpkessels/blog/issues/new) to open an issue.
 
-Or reach me at [l@lmpkessels.com](l@lmpkessels.com).
+Or reach me at [l@lmpkessels.com](mailto:l@lmpkessels.com).
