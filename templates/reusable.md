@@ -121,4 +121,11 @@ slug: --snip--
   <li><b></b></li>
 </ul>
 
+<!-- Ordered list for full posts -->
+<ol class="post-ul">
+  <li><b></b></li>
+  <li><b></b></li>
+  <li><b></b></li>
+</ol>
+
 <a href="--snip--" target="_blank" rel="noopener noreferrer"><em>--snip--</em></a>
