@@ -1,5 +1,5 @@
 ---
-title: Learning fast and deep in the age of AI
+title: How to use AI to learn fast without losing debt
 html_title: Learning in the age of AI | Lkessels
 description: A short reflection on learning fast without losing depth, using AI as leverage, first principles, and real building to create lasting understanding.
 section: essays
