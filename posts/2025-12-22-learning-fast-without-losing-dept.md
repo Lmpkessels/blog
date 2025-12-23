@@ -15,7 +15,7 @@ With that being said, let's dive into how it's done.
 
 ## How I leverage AI in my learning process
 
-A lot of people are **scared that AI will replace their jobs**, while a **lot of jobs will indeed be replaced**, your intellect never will. And the better you become at understanding and **learning skills and knowledge**, the greater your intellect will grow. This also means that you can **add more value to society** in the coming age.
+A lot of people are **scared of AI replacing their jobs**, while a **lot of jobs will indeed be replaced**, your intellect never will. And the better you become at understanding, **learning skills, and consolidating new knowledge**, the greater you will grow. This also means that you can **add more value to society** in the coming age.
 
 Here's how I use AI in my learning process, first I keep this **mental note**, AI has seen patterns accross many domains, better than we humans probably can. Some people ask, **'But what if AI is wrong?'** Well, **'what if the resource you're getting information from is wrong?'** Same question, different lens.
 
