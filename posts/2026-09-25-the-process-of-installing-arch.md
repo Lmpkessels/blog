@@ -9,8 +9,6 @@ date: 2026/09/25
 slug: Arch-Linux-installation
 ---
 
-# The process of installing Arch Linux and what it taught me
-
 For a while I'd been thinking about installing Arch Linux, but every Google search made me question the opposite: whether I could handle it, and what it would bring to the table. But for me, someone who wants to build a greater understanding of computers and how they work, I thought, let's just give it a try and see what happens.
 
 And here I am writing on my newly installed Arch Linux Operating System.
