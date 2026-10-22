@@ -6,7 +6,7 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 POSTS_DIR = ROOT / "posts"
 
-def create_draft():
+def create_blog():
     # Collect metadata
     filename = input("Filename: ").strip()
     title = input("Title: ").strip()
@@ -68,4 +68,4 @@ def create_draft():
 
 
 if __name__ == "__main__":
-    create_draft()
+    create_blog()
