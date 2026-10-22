@@ -2,7 +2,7 @@
 title: HMAC implementation for SHA256
 html_title: HMAC for SHA256 | Lmpkessels
 description: Step-by-step HMAC implementation in Rust using SHA256. Includes Rust code examples, key normalization, XOR with ipad/opad, and test verification.
-section: cryptography
+section: algos
 image: /assets/hmac-sha256-thumb.jpg
 alternative: Dark minimalist thumbnail showing binary code with bold text. HMAC SHA256 Rust.
 date: 2025-09-26
