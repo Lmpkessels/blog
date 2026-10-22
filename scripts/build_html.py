@@ -17,20 +17,18 @@ DEFAULT_IMAGE = "/assets/default.png"
 
 SECTION_LABELS = {
     "math": "Mathematics",
-    "cryptography": "Cryptography",
+    "algos": "Algorithms",
+    "blockchain": "Blockchain",
     "comp-sci": "Comp-sci",
-    "essays": "Essays",
     "hq": "lkessels blog",
-    "thinking": "Thinking Vault",
     "misc": "lkessels blog",
 }
 
 SECTION_TITLES = {
     "math": "Mathematics | lkessels blog",
-    "cryptography": "Cryptography | lkessels blog",
+    "algos": "Algorithms | lkessels blog",
+    "blockchain": "Blockchain | lkessels blog",
     "comp-sci": "Comp-sci | lkessels blog",
-    "essays": "Essays | lkessels blog",
-    "thinking": "Thinking Vault | lkessels blog",
     "hq": "lkessels Headquarters | lkessels blog",
     "misc": "lkessels Misc | lkessels blog",
 }
