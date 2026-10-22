@@ -1,19 +1,4 @@
-# Structure
 .prettierignore
-
-# Cheat sheet
-markdown_cheatsheet.md 
-github.md
-
-# Working files
-TODO.md
-thoughts.md
-
-# Pre/old-thought
-posts-archived
-posts-in-progress
-clarifying
-
-# Archive
-
 archive
+*TODO
+*__pycache__
