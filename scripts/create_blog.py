@@ -17,6 +17,10 @@ def create_draft():
     if not filename:
         raise ValueError("Filename cannot be empty")
 
+    day = datetime.date.today().strftime("%d")
+
+    filename = f"{day}-{filename}"
+
     if not filename.endswith(".md"):
         filename += ".md"
 
@@ -29,7 +33,7 @@ def create_draft():
     today = datetime.date.today()
     metadata = {
         "title": title,
-        "html_title": f"{title} | LukeFi",
+        "html_title": f"{title} | Lmpkessels Blog",
         "description": "",
         "section": section,
         "image": "/assets/default.png",
@@ -60,7 +64,7 @@ def create_draft():
         )
         file.write("---\n\n")
 
-    print(f"Draft created: {filepath}")
+    print(f"Markdown file for blog created at: {filepath}")
 
 
 if __name__ == "__main__":
