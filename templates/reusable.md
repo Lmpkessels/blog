@@ -1,14 +1,3 @@
----
-title: --snip--
-html_title: --snip-- | LukeFi
-description: --snip-- (Short SEO summary (<=160 chars))
-section: math
-image: /assets/--snip--
-alternative: --snip--
-date: --snip--
-slug: --snip--
----
-
 <!-- Image default with figcaption -->
 <figure>
   <img
