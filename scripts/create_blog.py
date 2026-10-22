@@ -45,7 +45,7 @@ def create_blog():
     # Resolve destination directory
     if not POSTS_DIR.is_dir():
         raise FileNotFoundError(
-            f"Drafts directory does not exist: {DRAFTS_DIR}"
+            f"Posts directory does not exist: {DRAFTS_DIR}"
         )
 
     directory = POSTS_DIR / today.strftime("%Y/%m")
