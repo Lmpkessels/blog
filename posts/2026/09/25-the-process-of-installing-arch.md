@@ -5,7 +5,7 @@ description: A summary of the process of installing Arch Linux and what it taugh
 section: comp-sci
 image: /assets/blog_arch_installation_thumbnail.png
 alternative: Thumbnail for the Arch Linux Installtion Blog
-date: 2026/09/25
+date: 2026-09-25
 slug: Arch-Linux-installation
 ---
 

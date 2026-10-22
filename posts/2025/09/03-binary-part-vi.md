@@ -1,7 +1,7 @@
 ---
 title: Arithmetic Logic Unit (ALU) Explained
 html_title: Binary Part VI
-description: Learn how an ALU works, from logic gates to Rust implementation: ripple-carry adders, multiplication, division, and opcode control.
+description: Learn how an ALU works, from logic gates to Rust implementation. Ripple-carry adders, multiplication, division, and opcode control.
 section: comp-sci
 image: /assets/thumb-alu-blog.png
 alternative: Black, white, and gray thumbnail showing logic gates connected to an ALU with labeled inputs (opcode, A) and output, alongside the title 'Arithmetic Logic Unit (ALU) Explained'.
