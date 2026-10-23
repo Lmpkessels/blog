@@ -10,6 +10,7 @@ def create_blog():
     # Collect metadata
     filename = input("Filename: ").strip()
     title = input("Title: ").strip()
+    html_title = input("Html title: ").strip()
     section = input("Section: ").strip().lower()
     slug = input("Slug: ").strip()
 
@@ -19,6 +20,7 @@ def create_blog():
 
     day = datetime.date.today().strftime("%d")
 
+    filename = filename.replace(' ', '-')
     filename = f"{day}-{filename}"
 
     if not filename.endswith(".md"):
@@ -30,10 +32,11 @@ def create_blog():
         raise ValueError("Slug cannot be empty")
 
     # Construct metadata
+    html_title = html_title.replace(' ', '_')
     today = datetime.date.today()
     metadata = {
-        "title": title,
-        "html_title": f"{title} | Lmpkessels Blog",
+        "title": title.title(),
+        "html_title": f"{html_title} | Lmpkessels Blog",
         "description": "",
         "section": section,
         "image": "/assets/default.png",
