@@ -20,7 +20,7 @@ SECTION_LABELS = {
     "algos": "Algorithms",
     "blockchain": "Blockchain",
     "comp-sci": "Comp-sci",
-    "hq": "lkessels blog",
+    "homepage": "lkessels blog",
     "misc": "lkessels blog",
 }
 
@@ -29,7 +29,7 @@ SECTION_TITLES = {
     "algos": "Algorithms | lkessels blog",
     "blockchain": "Blockchain | lkessels blog",
     "comp-sci": "Comp-sci | lkessels blog",
-    "hq": "lkessels Headquarters | lkessels blog",
+    "homepage": "All posts | lkessels blog",
     "misc": "lkessels Misc | lkessels blog",
 }
 

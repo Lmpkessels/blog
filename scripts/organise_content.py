@@ -5,7 +5,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 CONTENT_DIR = ROOT / "content"
-HOME_DIR = CONTENT_DIR / "homepages"
+HOME_DIR = CONTENT_DIR / "homepage"
 
 
 def read_blog(blog_md):
